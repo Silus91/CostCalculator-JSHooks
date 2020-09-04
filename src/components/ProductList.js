@@ -13,8 +13,9 @@ const ProductList = () => {
   //     (prev, next) => prev + next.componentList.componentWeight,
   //     0
   //   );
+
+  //todo redoce component weight total cost total etc
   console.log(productList);
-  //   console.log(totalWeight);
 
   return (
     <div>
@@ -73,46 +74,3 @@ const ProductList = () => {
 };
 
 export default ProductList;
-
-{
-  /* <ul>
-{product.componentList.map((component) => {
-  return (
-    <li key={component.id}>
-      {component.ingredientName}
-    </li>
-  );
-})}
-</ul> */
-}
-
-{
-  /* <ul className='collapsible'>
-  <li>
-    <div className='collapsible-header'>Product List</div>
-    <div className='collapsible-body'>
-        <div className='card-content'>
-          <table className='striped'>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Total Weight</td>
-                <td>Total Cost</td>
-              </tr>
-            </thead>
-            <tbody>
-              {productList.map((product) => {
-                return (
-                  <tr key={product.id}>
-                    <td> {product.productName}</td>
-                    <td>{product.totalValue}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-      </div>
-    </div>
-  </li>
-</ul>; */
-}
