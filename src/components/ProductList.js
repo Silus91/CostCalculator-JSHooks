@@ -14,7 +14,8 @@ const ProductList = () => {
   //     0
   //   );
 
-  //todo redoce component weight total cost total etc
+  //todo redoce component weight total cost total etc and stuff
+
   console.log(productList);
 
   return (
