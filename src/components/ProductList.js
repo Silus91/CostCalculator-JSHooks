@@ -13,7 +13,6 @@ const ProductList = () => {
   //     (prev, next) => prev + next.componentList.componentWeight,
   //     0
   //   );
-
   //todo redoce component weight total cost total etc and stuff
 
   console.log(productList);

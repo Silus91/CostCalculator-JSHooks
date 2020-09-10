@@ -22,7 +22,7 @@ const Divider = () => {
     setState({ ...state, valuePerItem: totalCost / state.divider });
     // const reciple = {
     //   id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
-    // };
+    // }
   };
   const { divider, valuePerItem } = state;
   return (
