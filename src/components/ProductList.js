@@ -15,6 +15,9 @@ const ProductList = () => {
   //   );
   //todo redoce component weight total cost total etc and stuff
 
+  // total value from product
+  // divider value
+
   console.log(productList);
 
   return (
@@ -50,12 +53,16 @@ const ProductList = () => {
                                 {product.componentList.map((component) => {
                                   return (
                                     <tr key={component.id}>
-                                      <td> {component.ingredientName}</td>
+                                      <td>{component.ingredientName}</td>
                                       <td>{component.componentWeight}</td>
                                       <td>{component.componentCost}</td>
                                     </tr>
                                   );
                                 })}
+                                <tr>
+                                  <td>{product.totalValue}</td>
+                                  <td>{product.items}</td>
+                                </tr>
                               </tbody>
                             </table>
                           </div>
