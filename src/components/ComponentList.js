@@ -18,7 +18,7 @@ const ComponentList = () => {
             const { id, ingredientName, componentCost } = component;
             return (
               <tr key={id}>
-                <td className='flow-text'>{ingredientName} </td>
+                <td className='flow-text'>{ingredientName}</td>
                 <td className='flow-text'>
                   {parseFloat(componentCost).toFixed(2)}
                 </td>
