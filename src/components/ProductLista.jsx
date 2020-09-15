@@ -26,16 +26,12 @@ export class ProductList extends Component {
       list: [...this.state.list, usedProduct],
       productWeight: "",
     });
-
-    console.log(usedProduct.productWeight * usedProduct.productRatio);
-    console.log("list", this.state.list);
   }
 
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.name);
   };
 
   handleSelectChange = (event) => {
