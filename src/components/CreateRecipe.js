@@ -29,7 +29,6 @@ const CreateRecipe = () => {
           <div className='collapsible-body card'>
             <NameGiver nameContainer={nameContainer} />
             <div className='divider'></div>
-
             <AddComponent />
             <div className='divider'></div>
             <ComponentList />
