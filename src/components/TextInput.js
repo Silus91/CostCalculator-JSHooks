@@ -11,6 +11,7 @@ const TextInput = (props) => {
         name={props.name}
         className='validate'
         onChange={props.onChange}
+        value={props.value}
       />
     </div>
   );

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./App.css";
 import CreateRecipe from "./components/CreateRecipe";
 import IngredientContexProvider from "./contexts/IngredientContex";
-import ComponentContextProvider from "./contexts/ComponentContext";
 import ProductContexProvider from "./contexts/ProductContext";
 import AddIngredient from "./components/AddIngredient";
 import M from "materialize-css";
@@ -17,14 +16,12 @@ function App() {
   return (
     <div className='container'>
       <IngredientContexProvider>
-        <ComponentContextProvider>
-          <IngredientList />
-          <AddIngredient />
-          <CreateRecipe />
-          <ProductContexProvider>
-            <ProductList />
-          </ProductContexProvider>
-        </ComponentContextProvider>
+        <IngredientList />
+        <AddIngredient />
+        <CreateRecipe />
+        <ProductContexProvider>
+          <ProductList />
+        </ProductContexProvider>
       </IngredientContexProvider>
     </div>
   );

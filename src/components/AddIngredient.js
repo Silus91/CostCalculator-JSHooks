@@ -34,6 +34,7 @@ const AddIngredient = () => {
     };
     addIngredientToList(newIngredient);
     setState({ ingredientWeight: "", ingredientName: "", ingredientCost: "" });
+    console.log(newIngredient);
   };
 
   return (

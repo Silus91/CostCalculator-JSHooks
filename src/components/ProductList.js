@@ -18,8 +18,6 @@ const ProductList = () => {
   // total value from product
   // divider value
 
-  console.log(productList);
-
   return (
     <div>
       <ul className='collapsible'>

@@ -25,15 +25,20 @@ const CreateRecipe = () => {
 
   const handleChange = (event) => {
     setState({
+      ...state,
       [event.target.name]: event.target.value,
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newProduct = { productName: state.productName };
-
-    console.log(newProduct);
+    const newIngredient = {
+      id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
+      productName: state.productName,
+      divider: parseFloat(state.divider),
+    };
+    setState({ productName: "", divider: "" });
+    console.log(newIngredient);
   };
 
   return (
@@ -47,39 +52,32 @@ const CreateRecipe = () => {
           <div className='collapsible-body card'>
             <AddComponent addComponentToList={addComponentToList} />
             <div className='divider'></div>
-            <ComponentList componentList={state.componentList} />
+            <div>
+              <ComponentList componentList={state.componentList} />
+            </div>
             <form onSubmit={handleSubmit}>
-              <TextInput
-                name='productName'
-                type='text'
-                label='New Product Name'
-                onChange={handleChange}
-              />
-              <TextInput
-                name='divider'
-                type='number'
-                label='Quantity'
-                onChange={handleChange}
-              />
-
-              <button type='submit' className='btn teal darken-2 z-depth-2'>
+              <div className='input-field col s12'>
+                <input
+                  type='text'
+                  name='productName'
+                  className='validate'
+                  onChange={handleChange}
+                />
+                <label htmlFor='productName'>productName Name</label>
+              </div>
+              <div className='input-field col s12'>
+                <input
+                  type='number'
+                  className='validate'
+                  name='divider'
+                  onChange={handleChange}
+                />
+                <label htmlFor='divider'>divider Cost</label>
+              </div>
+              <button type='submit' className='btn'>
                 Submit
               </button>
             </form>
-            <ul>
-              {state.componentList.map((component) => {
-                return (
-                  <li key={component.id}>
-                    <span className='flow-text'>
-                      {component.ingredientName}
-                    </span>
-                    <span className='flow-text'>
-                      {parseFloat(component.componentCost).toFixed(2)}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
           </div>
         </li>
       </ul>

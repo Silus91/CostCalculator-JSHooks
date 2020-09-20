@@ -7,7 +7,7 @@ const ComponentList = ({ componentList }) => {
         <thead>
           <tr>
             <th>Component Name</th>
-            <th>Component Price</th>
+            <th>Component Cost</th>
           </tr>
         </thead>
         <tbody>
