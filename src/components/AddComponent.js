@@ -7,6 +7,7 @@ const AddComponent = ({ addComponentToList }) => {
   const [state, setState] = useState({
     componentWeight: "",
     ingredientRatio: "",
+    componentName: "",
   });
 
   useEffect(() => {
@@ -36,16 +37,28 @@ const AddComponent = ({ addComponentToList }) => {
     });
   };
 
+  const handleSelectChange = (event) => {
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+      componentName: event.target.label,
+    });
+    console.log(state.componentName);
+  };
+
+  //test dla ingredient ratio zeby bylo arrayem i zeby bylko latwiej dostac te value jeseli sie da i potem przerobic z powrotem na string albo number
+
   return (
     <div className='card-content'>
       <form onSubmit={handleSubmit}>
         <div className=''>
-          <select name='ingredientRatio' onChange={handleChange}>
+          <select name='ingredientRatio' onChange={handleSelectChange}>
             {ingredientList.map((ingredient) => {
               return (
                 <option
                   key={ingredient.id}
                   value={`${ingredient.ingredientRatio} ${ingredient.ingredientName}`}
+                  label={ingredient.ingredientName}
                 >
                   {ingredient.ingredientName}
                 </option>
