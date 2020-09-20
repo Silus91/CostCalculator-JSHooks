@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
+import M from "materialize-css";
+import TextInput from "./TextInput";
 import AddComponent from "./AddComponent";
 import ComponentList from "./ComponentList";
-import NameGiver from "./NameGiver";
-import Divider from "./Divider";
-import M from "materialize-css";
 
 const CreateRecipe = () => {
   useEffect(() => {
@@ -12,10 +11,29 @@ const CreateRecipe = () => {
 
   const [state, setState] = useState({
     productName: "",
+    ingredientWeight: "",
+    componentList: [],
+    divider: "",
   });
 
-  const nameContainer = (productName) => {
-    setState({ ...state, productName: productName });
+  const addComponentToList = (newComponent) => {
+    setState({
+      componentList: state.componentList.concat(newComponent),
+    });
+    console.log(state.componentList);
+  };
+
+  const handleChange = (event) => {
+    setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newProduct = { productName: state.productName };
+
+    console.log(newProduct);
   };
 
   return (
@@ -27,13 +45,41 @@ const CreateRecipe = () => {
             Create Reciple
           </div>
           <div className='collapsible-body card'>
-            <NameGiver nameContainer={nameContainer} />
+            <AddComponent addComponentToList={addComponentToList} />
             <div className='divider'></div>
-            <AddComponent />
-            <div className='divider'></div>
-            <ComponentList />
-            <div className='divider'></div>
-            <Divider />
+            <ComponentList componentList={state.componentList} />
+            <form onSubmit={handleSubmit}>
+              <TextInput
+                name='productName'
+                type='text'
+                label='New Product Name'
+                onChange={handleChange}
+              />
+              <TextInput
+                name='divider'
+                type='number'
+                label='Quantity'
+                onChange={handleChange}
+              />
+
+              <button type='submit' className='btn teal darken-2 z-depth-2'>
+                Submit
+              </button>
+            </form>
+            <ul>
+              {state.componentList.map((component) => {
+                return (
+                  <li key={component.id}>
+                    <span className='flow-text'>
+                      {component.ingredientName}
+                    </span>
+                    <span className='flow-text'>
+                      {parseFloat(component.componentCost).toFixed(2)}
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </li>
       </ul>
@@ -42,5 +88,3 @@ const CreateRecipe = () => {
 };
 
 export default CreateRecipe;
-
-//one big form with list and select name for it

@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { IngredientContext } from "../contexts/IngredientContex";
-import { ComponentContext } from "../contexts/ComponentContext";
 import M from "materialize-css";
 
-const AddComponent = () => {
+const AddComponent = ({ addComponentToList }) => {
   const { ingredientList } = useContext(IngredientContext);
   const [state, setState] = useState({
     componentWeight: "",
@@ -13,8 +12,6 @@ const AddComponent = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
-
-  const { addComponentToList } = useContext(ComponentContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +25,7 @@ const AddComponent = () => {
       ),
     };
     addComponentToList(newComponent);
+    console.log(newComponent);
     setState({ componentWeight: "", ingredientRatio: "" });
   };
 

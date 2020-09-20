@@ -1,9 +1,6 @@
-import React, { useContext } from "react";
-import { ComponentContext } from "../contexts/ComponentContext";
+import React from "react";
 
-const ComponentList = () => {
-  const { componentList } = useContext(ComponentContext);
-
+const ComponentList = ({ componentList }) => {
   return (
     <div className='card-content'>
       <table className='centered'>
