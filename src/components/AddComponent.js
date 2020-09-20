@@ -26,7 +26,7 @@ const AddComponent = ({ addComponentToList }) => {
     };
     addComponentToList(newComponent);
     console.log(newComponent);
-    setState({ componentWeight: "", ingredientRatio: "" });
+    setState({ ...state, componentWeight: "", ingredientRatio: "" });
   };
 
   const handleChange = (event) => {

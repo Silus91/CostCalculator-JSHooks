@@ -16,10 +16,10 @@ function App() {
   return (
     <div className='container'>
       <IngredientContexProvider>
-        <IngredientList />
-        <AddIngredient />
-        <CreateRecipe />
         <ProductContexProvider>
+          <IngredientList />
+          <AddIngredient />
+          <CreateRecipe />
           <ProductList />
         </ProductContexProvider>
       </IngredientContexProvider>

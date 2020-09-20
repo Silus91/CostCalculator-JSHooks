@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import TextInput from "./TextInput";
 import AddComponent from "./AddComponent";
@@ -11,10 +12,10 @@ const CreateRecipe = () => {
 
   const [state, setState] = useState({
     productName: "",
-    ingredientWeight: "",
     componentList: [],
-    divider: "",
   });
+
+  const { addProductToList } = useContext(ProductContext);
 
   const addComponentToList = (newComponent) => {
     setState({
@@ -32,13 +33,14 @@ const CreateRecipe = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const newIngredient = {
+    const newProduct = {
       id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
       productName: state.productName,
-      divider: parseFloat(state.divider),
+      componentList: state.componentList,
     };
-    setState({ productName: "", divider: "" });
-    console.log(newIngredient);
+    addProductToList(newProduct);
+    setState({ ...state, productName: "", componentList: [] });
+    console.log(newProduct);
   };
 
   return (
@@ -63,16 +65,7 @@ const CreateRecipe = () => {
                   className='validate'
                   onChange={handleChange}
                 />
-                <label htmlFor='productName'>productName Name</label>
-              </div>
-              <div className='input-field col s12'>
-                <input
-                  type='number'
-                  className='validate'
-                  name='divider'
-                  onChange={handleChange}
-                />
-                <label htmlFor='divider'>divider Cost</label>
+                <label htmlFor='productName'>Product Name</label>
               </div>
               <button type='submit' className='btn'>
                 Submit
