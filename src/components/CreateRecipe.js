@@ -54,9 +54,9 @@ const CreateRecipe = () => {
           <div className='collapsible-body card'>
             <AddComponent addComponentToList={addComponentToList} />
             <div className='divider'></div>
-            <div>
+            {/* <div>
               <ComponentList componentList={state.componentList} />
-            </div>
+            </div> */}
             <form onSubmit={handleSubmit}>
               <div className='input-field col s12'>
                 <input

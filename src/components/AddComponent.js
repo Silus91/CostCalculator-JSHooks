@@ -25,8 +25,9 @@ const AddComponent = ({ addComponentToList }) => {
         state.ingredientRatio.split(" ")[0] * state.componentWeight
       ),
     };
+
     addComponentToList(newComponent);
-    console.log(newComponent);
+    console.log(newComponent.toString());
     setState({ ...state, componentWeight: "", ingredientRatio: "" });
   };
 
@@ -35,15 +36,7 @@ const AddComponent = ({ addComponentToList }) => {
       ...state,
       [event.target.name]: event.target.value,
     });
-  };
-
-  const handleSelectChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-      componentName: event.target.label,
-    });
-    console.log(state.componentName);
+    console.log(event.target.value);
   };
 
   //test dla ingredient ratio zeby bylo arrayem i zeby bylko latwiej dostac te value jeseli sie da i potem przerobic z powrotem na string albo number
@@ -52,7 +45,7 @@ const AddComponent = ({ addComponentToList }) => {
     <div className='card-content'>
       <form onSubmit={handleSubmit}>
         <div className=''>
-          <select name='ingredientRatio' onChange={handleSelectChange}>
+          <select name='ingredientRatio' onChange={handleChange}>
             {ingredientList.map((ingredient) => {
               return (
                 <option
