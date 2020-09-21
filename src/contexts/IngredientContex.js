@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import ingredients from "../components/ingredients";
+import ingredients from "./ingredients";
 
 const INITIAL_STATE = ingredients;
 export const IngredientContext = createContext();

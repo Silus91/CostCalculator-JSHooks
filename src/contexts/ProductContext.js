@@ -1,5 +1,5 @@
 import React, { Component, createContext } from "react";
-import products from "../components/products";
+import products from "./products";
 
 const INITIAL_STATE = products;
 export const ProductContext = createContext();

@@ -27,7 +27,6 @@ const AddComponent = ({ addComponentToList }) => {
     };
 
     addComponentToList(newComponent);
-    console.log(newComponent.toString());
     setState({ ...state, componentWeight: "", ingredientRatio: "" });
   };
 
@@ -36,7 +35,6 @@ const AddComponent = ({ addComponentToList }) => {
       ...state,
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.value);
   };
 
   //test dla ingredient ratio zeby bylo arrayem i zeby bylko latwiej dostac te value jeseli sie da i potem przerobic z powrotem na string albo number

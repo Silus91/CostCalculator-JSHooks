@@ -25,10 +25,6 @@ export default [
         ingredientRatio: 1.5,
       },
     ],
-    totalValue: 5227.3,
-    totalUsedWeight: 4613,
-    items: 50,
-    valuePerItem: 104.55,
   },
   {
     id: 3,
@@ -56,10 +52,6 @@ export default [
         ingredientRatio: 1.5,
       },
     ],
-    totalValue: 5227.3,
-    totalUsedWeight: 4613,
-    items: 50,
-    valuePerItem: 104.55,
   },
   {
     id: 2,
@@ -87,10 +79,6 @@ export default [
         ingredientRatio: 1.5,
       },
     ],
-    totalValue: 5227.3,
-    totalUsedWeight: 4613,
-    items: 50,
-    valuePerItem: 104.55,
   },
   {
     id: 1,
@@ -118,9 +106,5 @@ export default [
         ingredientRatio: 1.5,
       },
     ],
-    totalValue: 5227.3,
-    totalUsedWeight: 4613,
-    items: 50,
-    valuePerItem: 104.55,
   },
 ];

@@ -57,11 +57,6 @@ const ProductList = () => {
                                     </tr>
                                   );
                                 })}
-                                <tr>
-                                  <td>Total cost{product.totalValue}</td>
-                                  <td> Number of products{product.items}</td>
-                                  <td>Price per item {product.valuePerItem}</td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
