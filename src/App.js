@@ -7,6 +7,7 @@ import AddIngredient from "./components/AddIngredient";
 import M from "materialize-css";
 import IngredientList from "./components/IngredientList";
 import ProductList from "./components/ProductList";
+import ProductScale from "./components/ProductScale";
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
           <AddIngredient />
           <CreateRecipe />
           <ProductList />
+          <ProductScale />
         </ProductContexProvider>
       </IngredientContexProvider>
     </div>
