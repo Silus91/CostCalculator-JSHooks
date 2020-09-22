@@ -30,7 +30,14 @@ const Test = () => {
     event.preventDefault();
 
     const third = state.third;
-    console.log(third);
+    const ratio1 = state.second / state.first;
+    console.log("ratio1", ratio1);
+
+    const ratio2 = state.first / state.second;
+    console.log("ratio2", ratio2);
+
+    console.log("drugi", third * ratio1);
+    console.log("pierwszy", third * ratio2);
   };
 
   return (
