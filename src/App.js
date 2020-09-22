@@ -8,6 +8,7 @@ import M from "materialize-css";
 import IngredientList from "./components/IngredientList";
 import ProductList from "./components/ProductList";
 import ProductScale from "./components/ProductScale";
+import Test from "./components/test";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
           <CreateRecipe />
           <ProductList />
           <ProductScale />
+          <Test />
         </ProductContexProvider>
       </IngredientContexProvider>
     </div>
