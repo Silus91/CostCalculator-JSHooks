@@ -39,7 +39,7 @@ const ProductScale = () => {
                                 <tr>
                                   <td>Name</td>
                                   <td>Weight</td>
-                                  <td>Cost</td>
+                                  <td>New weight</td>
                                 </tr>
                               </thead>
                               <tbody>
@@ -47,6 +47,7 @@ const ProductScale = () => {
                                   return (
                                     <tr key={component.id}>
                                       <td>{component.ingredientName}</td>
+                                      <td>{component.componentWeight}</td>
                                       <td>
                                         <form>
                                           <input
@@ -56,7 +57,6 @@ const ProductScale = () => {
                                           />
                                         </form>
                                       </td>
-                                      <td>{component.componentCost}</td>
                                     </tr>
                                   );
                                 })}

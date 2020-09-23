@@ -38,6 +38,7 @@ const Test = () => {
 
     console.log("drugi", third * ratio1);
     console.log("pierwszy", third * ratio2);
+    setState({ ...state, first: third * ratio2 });
   };
 
   return (
@@ -54,6 +55,7 @@ const Test = () => {
                 <input
                   type='text'
                   name='first'
+                  value={state.first}
                   className='validate'
                   onChange={handleChange}
                 />
@@ -63,6 +65,7 @@ const Test = () => {
                 <input
                   type='text'
                   name='second'
+                  value={state.second}
                   className='validate'
                   onChange={handleChange}
                 />
