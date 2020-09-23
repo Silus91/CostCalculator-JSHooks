@@ -52,7 +52,6 @@ const ProductScale = () => {
                                         <form>
                                           <input
                                             type='number'
-                                            value={component.componentWeight}
                                             onChange={handleChange}
                                           />
                                         </form>
