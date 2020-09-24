@@ -22,11 +22,8 @@ const ProductScale = () => {
 
   const allCosts2 = productList.componentList.map((component) => {
     console.log("lll", component);
-
     return component;
   });
-
-  console.log(allCosts2);
 
   return (
     <div>
