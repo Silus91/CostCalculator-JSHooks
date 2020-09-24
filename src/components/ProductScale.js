@@ -13,6 +13,21 @@ const ProductScale = () => {
     console.log(event.target.value);
   };
 
+  const allCosts = productList.map((component) => {
+    return component.componentList.map((list) => {
+      console.log("list", list);
+      return list;
+    });
+  });
+
+  const allCosts2 = productList.componentList.map((component) => {
+    console.log("lll", component);
+
+    return component;
+  });
+
+  console.log(allCosts2);
+
   return (
     <div>
       <ul className='collapsible'>
