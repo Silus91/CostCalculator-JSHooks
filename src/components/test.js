@@ -39,6 +39,7 @@ const Test = () => {
     console.log("drugi", third * ratio1);
     console.log("pierwszy", third * ratio2);
     setState({ ...state, first: third * ratio2 });
+    //check if its working
   };
 
   return (
