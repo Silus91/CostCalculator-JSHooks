@@ -87,6 +87,15 @@ const Test = () => {
                 />
                 <label htmlFor='third'>third</label>
               </div>
+              <div className='input-field col s12'>
+                <input
+                  type='text'
+                  name='fourth'
+                  className='validate'
+                  onChange={handleChange}
+                />
+                <label htmlFor='fourth'>fourth</label>
+              </div>
               <button type='submit' className='btn'>
                 Submit
               </button>
