@@ -21,6 +21,13 @@ export default [
     ingredientRatio: 1.1,
   },
   {
+    id: 99,
+    ingredientName: "judfasd",
+    ingredientCost: 10,
+    ingredientWeight: 8090,
+    ingredientRatio: 1.2,
+  },
+  {
     id: 4,
     ingredientName: "olej 5l",
     ingredientCost: 3,
