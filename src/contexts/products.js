@@ -4,7 +4,7 @@ export default [
     productName: "mydlo kokosowe",
     componentList: [
       {
-        componentCost: 4999.5,
+        componentCost: 4969.5,
         componentWeight: 4545,
         id: 905617,
         ingredientName: "kolor",
@@ -18,7 +18,7 @@ export default [
         ingredientRatio: 5.2,
       },
       {
-        componentCost: 51,
+        componentCost: 54,
         componentWeight: 34,
         id: 441149,
         ingredientName: "olej",
