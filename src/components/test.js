@@ -23,7 +23,7 @@ const Test = () => {
     event.preventDefault();
 
     const test = { first: state.first, second: state.second };
-    console.log(test);
+    console.log(test.first);
   };
 
   const handlethirdSubmit = (event) => {
