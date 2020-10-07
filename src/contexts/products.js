@@ -24,6 +24,13 @@ export default [
         ingredientName: "olej",
         ingredientRatio: 1.5,
       },
+      {
+        componentCost: 4969.5,
+        componentWeight: 4545,
+        id: 905517,
+        ingredientName: "dsaa",
+        ingredientRatio: 1.1,
+      },
     ],
   },
   {
