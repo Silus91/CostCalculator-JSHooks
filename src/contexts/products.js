@@ -58,6 +58,13 @@ export default [
         ingredientName: "olej to",
         ingredientRatio: 1.5,
       },
+      {
+        componentCost: 176.8,
+        componentWeight: 34,
+        id: 252514,
+        ingredientName: "kolo",
+        ingredientRatio: 5.2,
+      },
     ],
   },
 ];
