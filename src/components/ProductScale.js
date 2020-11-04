@@ -15,15 +15,14 @@ const ProductScale = () => {
 
   const allCosts = productList.map((component) => {
     return component.componentList.map((list) => {
-      console.log("list", list);
       return list;
     });
   });
 
-  const allCosts2 = productList.componentList.map((component) => {
-    console.log("lll", component);
-    return component;
-  });
+  // const allCosts2 = productList.componentList.map((component) => {
+  //   console.log("lll", component);
+  //   return component;
+  // });
 
   return (
     <div>

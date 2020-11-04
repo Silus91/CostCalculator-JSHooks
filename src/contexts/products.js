@@ -47,7 +47,7 @@ export default [
       {
         componentCost: 176.8,
         componentWeight: 34,
-        id: 252514,
+        id: 252614,
         ingredientName: "jajo",
         ingredientRatio: 5.2,
       },
@@ -61,7 +61,7 @@ export default [
       {
         componentCost: 176.8,
         componentWeight: 34,
-        id: 252514,
+        id: 252584,
         ingredientName: "kolo",
         ingredientRatio: 5.2,
       },

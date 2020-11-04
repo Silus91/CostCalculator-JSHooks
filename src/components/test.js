@@ -23,7 +23,7 @@ const Test = () => {
     event.preventDefault();
 
     const test = { first: state.first, second: state.second };
-    console.log(test.first);
+    console.log(test);
   };
 
   const handlethirdSubmit = (event) => {
@@ -31,11 +31,7 @@ const Test = () => {
     const third = state.third;
     const ratio1 = state.second / state.first;
     console.log("ratio1", ratio1);
-    const ratio2 = state.first / state.second;
-    console.log("ratio2", ratio2);
     console.log("drugi", third * ratio1);
-    console.log("pierwszy", third * ratio2);
-    setState({ ...state, first: third * ratio2 });
   };
 
   return (
@@ -52,7 +48,6 @@ const Test = () => {
                 <input
                   type='text'
                   name='first'
-                  value={state.first}
                   className='validate'
                   onChange={handleChange}
                 />
@@ -62,7 +57,6 @@ const Test = () => {
                 <input
                   type='text'
                   name='second'
-                  value={state.second}
                   className='validate'
                   onChange={handleChange}
                 />

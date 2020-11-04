@@ -13,15 +13,30 @@ const CreateRecipe = () => {
   const [state, setState] = useState({
     productName: "",
     componentList: [],
+    firstRatio: "",
   });
 
   const { addProductToList } = useContext(ProductContext);
 
   const addComponentToList = (newComponent) => {
+    if (state.componentList.length <= 0) {
+      newComponent.productRatio = newComponent.componentWeight;
+
+      setState({
+        ...state,
+        [newComponent.productRatio]: state.firstRatio,
+      });
+
+      console.log(newComponent, newComponent.productRatio);
+    } else {
+      console.log("tuu", parseFloat(state.firstRatio));
+    }
+
     setState({
+      ...state,
       componentList: state.componentList.concat(newComponent),
     });
-    console.log(state.componentList);
+    console.log("leng", state.componentList);
   };
 
   const handleChange = (event) => {
