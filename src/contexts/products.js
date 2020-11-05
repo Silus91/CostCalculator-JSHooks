@@ -9,6 +9,7 @@ export default [
         id: 905617,
         ingredientName: "kolor",
         ingredientRatio: 1.1,
+        productRatio: 4545,
       },
       {
         componentCost: 176.8,
@@ -16,6 +17,7 @@ export default [
         id: 252514,
         ingredientName: "swiezb",
         ingredientRatio: 5.2,
+        productRatio: 20,
       },
       {
         componentCost: 54,
@@ -23,6 +25,7 @@ export default [
         id: 441149,
         ingredientName: "olej",
         ingredientRatio: 1.5,
+        productRatio: 56,
       },
       {
         componentCost: 4969.5,
@@ -30,6 +33,7 @@ export default [
         id: 905517,
         ingredientName: "dsaa",
         ingredientRatio: 1.1,
+        productRatio: 100,
       },
     ],
   },
@@ -43,6 +47,7 @@ export default [
         id: 905617,
         ingredientName: "sol",
         ingredientRatio: 1.1,
+        productRatio: 4545,
       },
       {
         componentCost: 176.8,
@@ -50,6 +55,7 @@ export default [
         id: 252614,
         ingredientName: "jajo",
         ingredientRatio: 5.2,
+        productRatio: 15,
       },
       {
         componentCost: 51,
@@ -57,6 +63,7 @@ export default [
         id: 441149,
         ingredientName: "olej to",
         ingredientRatio: 1.5,
+        productRatio: 0.05,
       },
       {
         componentCost: 176.8,
@@ -64,6 +71,7 @@ export default [
         id: 252584,
         ingredientName: "kolo",
         ingredientRatio: 5.2,
+        productRatio: 12,
       },
     ],
   },

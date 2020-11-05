@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 
@@ -7,23 +7,22 @@ const ProductScale = () => {
     M.AutoInit();
   }, []);
 
+  const [state, setState] = useState({
+    usedWeight: "",
+  });
+
   const { productList } = useContext(ProductContext);
 
   const handleChange = (event) => {
-    console.log(event.target.value);
+    setState({
+      ...state,
+      [event.target.name]: event.target.value,
+    });
   };
 
-  const allCosts = productList.map((component) => {
-    return component.componentList.map((list) => {
-      return list;
-    });
-  });
+  console.log(productList.map(mainIng));
 
-  // const allCosts2 = productList.componentList.map((component) => {
-  //   console.log("lll", component);
-  //   return component;
-  // });
-
+  // need to put this into reusable functions const etc minimum in render extract map functions if possible
   return (
     <div>
       <ul className='collapsible'>
@@ -48,24 +47,36 @@ const ProductScale = () => {
                             <table className='striped'>
                               <thead>
                                 <tr>
+                                  <td>ID</td>
                                   <td>Name</td>
                                   <td>Weight</td>
-                                  <td>New weight</td>
+                                  <td>Product ratio</td>
                                 </tr>
                               </thead>
                               <tbody>
                                 {product.componentList.map((component) => {
                                   return (
                                     <tr key={component.id}>
+                                      <td>{component.id}</td>
+
                                       <td>{component.ingredientName}</td>
                                       <td>{component.componentWeight}</td>
                                       <td>
-                                        <form>
-                                          <input
-                                            type='number'
-                                            onChange={handleChange}
-                                          />
-                                        </form>
+                                        {component.id ===
+                                        product.componentList[0].id ? (
+                                          <form>
+                                            <input
+                                              type='number'
+                                              name='usedWeight'
+                                              value={state.usedWeight}
+                                              className='validate'
+                                              onChange={handleChange}
+                                            />
+                                          </form>
+                                        ) : (
+                                          component.productRatio *
+                                          state.usedWeight
+                                        )}
                                       </td>
                                     </tr>
                                   );
