@@ -20,8 +20,6 @@ const ProductScale = () => {
     });
   };
 
-  console.log(productList.map(mainIng));
-
   // need to put this into reusable functions const etc minimum in render extract map functions if possible
   return (
     <div>
