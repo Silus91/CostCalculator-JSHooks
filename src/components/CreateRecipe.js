@@ -17,25 +17,26 @@ const CreateRecipe = () => {
   });
 
   const { addProductToList } = useContext(ProductContext);
-
-  const addComponentToList = (newComponent) => {
+  //might change name if this const in the future
+  const mapData = (newComponent) => {
     if (state.componentList.length <= 0) {
       setState({
         ...state,
         firstRatio: (state.firstRatio = newComponent.componentWeight),
       });
       newComponent.productRatio = state.firstRatio;
-      console.log(newComponent.productRatio);
     } else {
       newComponent.productRatio =
         newComponent.componentWeight / state.firstRatio;
-      console.log("tuu", newComponent.productRatio);
     }
+  };
+
+  const addComponentToList = (newComponent) => {
+    mapData(newComponent);
     setState({
       ...state,
       componentList: state.componentList.concat(newComponent),
     });
-    console.log("leng", state.componentList);
   };
 
   const handleChange = (event) => {
@@ -54,7 +55,6 @@ const CreateRecipe = () => {
     };
     addProductToList(newProduct);
     setState({ ...state, productName: "", componentList: [] });
-    console.log(newProduct);
   };
 
   return (
@@ -71,7 +71,6 @@ const CreateRecipe = () => {
             <div>
               <ComponentList componentList={state.componentList} />
             </div>
-            <p>{state.firstRatio}</p>
             <form onSubmit={handleSubmit}>
               <div className='input-field col s12'>
                 <input

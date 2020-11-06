@@ -38,7 +38,7 @@ const AddIngredient = () => {
   };
 
   return (
-    <div className='row'>
+    <div className=''>
       <ul className='collapsible'>
         <li>
           <div className='collapsible-header'>
