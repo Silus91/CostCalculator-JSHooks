@@ -37,42 +37,4 @@ export default [
       },
     ],
   },
-  {
-    id: 3,
-    productName: "sol hujowa",
-    componentList: [
-      {
-        componentCost: 4999.5,
-        componentWeight: 4545,
-        id: 905617,
-        ingredientName: "sol",
-        ingredientRatio: 1.1,
-        productRatio: 4545,
-      },
-      {
-        componentCost: 176.8,
-        componentWeight: 34,
-        id: 252614,
-        ingredientName: "jajo",
-        ingredientRatio: 5.2,
-        productRatio: 15,
-      },
-      {
-        componentCost: 51,
-        componentWeight: 34,
-        id: 441149,
-        ingredientName: "olej to",
-        ingredientRatio: 1.5,
-        productRatio: 0.05,
-      },
-      {
-        componentCost: 176.8,
-        componentWeight: 34,
-        id: 252584,
-        ingredientName: "kolo",
-        ingredientRatio: 5.2,
-        productRatio: 12,
-      },
-    ],
-  },
 ];

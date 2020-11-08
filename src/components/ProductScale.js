@@ -9,8 +9,6 @@ const ProductScale = () => {
 
   const [state, setState] = useState({
     usedWeight: "",
-    totalWeight: "",
-    totalCost: "",
   });
 
   const { productList } = useContext(ProductContext);
@@ -23,6 +21,7 @@ const ProductScale = () => {
   };
 
   const renderRatio = (product, component) => {
+    renderCosts(product, component);
     if (component.id === product.componentList[0].id) {
       return (
         <form>
@@ -40,23 +39,32 @@ const ProductScale = () => {
   };
 
   const renderCosts = (product, component) => {
-    console.log(
-      product.componentList.map((component) => {
-        return component.componentWeight;
-      })
-    );
+    let cost = costsCounter(product, component);
+    component.usedCost = cost;
+    return cost;
+  };
+
+  const costsCounter = (product, component) => {
     if (component.id === product.componentList[0].id) {
-      return parseFloat(state.usedWeight * component.ingredientRatio).toFixed(
-        2
-      );
+      return state.usedWeight * component.ingredientRatio;
     } else {
-      return parseFloat(
+      return (
         component.productRatio * state.usedWeight * component.ingredientRatio
-      ).toFixed(2);
+      );
     }
   };
 
-  // need to put this into reusable functions const etc minimum in render extract map functions if possible
+  const totalCost = (product) => {
+    const arr = product.componentList.map((component) => {
+      return component.usedCost;
+    });
+
+    const totalValue = arr.reduce((prev, next) => {
+      return prev + next;
+    });
+    return totalValue;
+  };
+
   return (
     <div>
       <ul className='collapsible'>
@@ -96,9 +104,9 @@ const ProductScale = () => {
                                       <td>{component.ingredientName}</td>
                                       <td>{component.componentWeight}</td>
                                       <td>
-                                        {parseFloat(
-                                          renderCosts(product, component)
-                                        ).toFixed(2)}
+                                        {parseFloat(component.usedCost).toFixed(
+                                          2
+                                        )}
                                       </td>
                                       <td>{renderRatio(product, component)}</td>
                                     </tr>
@@ -106,6 +114,7 @@ const ProductScale = () => {
                                 })}
                               </tbody>
                             </table>
+                            <div>{totalCost(product)}</div>
                           </div>
                         </div>
                       </li>
