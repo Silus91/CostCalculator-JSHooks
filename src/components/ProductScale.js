@@ -10,6 +10,7 @@ const ProductScale = () => {
 
   const [state, setState] = useState({
     usedWeight: "",
+    totalCost: "",
   });
 
   const { productList } = useContext(ProductContext);
@@ -35,8 +36,11 @@ const ProductScale = () => {
         </form>
       );
     } else {
-      const totalWeight = component.productRatio * state.usedWeight;
-      return parseFloat(totalWeight).toFixed(2);
+      const usedProductWeight = component.productRatio * state.usedWeight;
+      console.log(usedProductWeight);
+
+      component.usedProductWeight = usedProductWeight;
+      return parseFloat(usedProductWeight).toFixed(2);
     }
   };
 
@@ -57,16 +61,27 @@ const ProductScale = () => {
   };
 
   const sumTotalCost = (product) => {
-    const arr = product.componentList.map((component) => {
+    const usedCostArray = product.componentList.map((component) => {
       return component.usedCost;
     });
-    const totalValue = arr.reduce((prev, next) => {
+    const totalValue = usedCostArray.reduce((prev, next) => {
       return prev + next;
     });
 
     return totalValue;
   };
 
+  const sumTotalWeight = (product) => {
+    const usedWeightArray = product.componentList.map((component) => {
+      return state.usedWeight + component.usedProductWeight;
+    });
+    console.log(product);
+    const totalWeight = usedWeightArray.reduce((prev, next) => {
+      return prev + next;
+    });
+
+    return totalWeight;
+  };
   const tableTitle = ["Name", "Weight", "Cost", "Used Weight"];
 
   return (
@@ -104,7 +119,7 @@ const ProductScale = () => {
                       </tbody>
                     </table>
                     <div>{sumTotalCost(product)}</div>
-                    <div>total weight</div>
+                    <div>{sumTotalWeight(product)}</div>
                   </div>
                 </div>
               </li>
