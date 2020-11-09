@@ -132,3 +132,7 @@ const ProductScale = () => {
 };
 
 export default ProductScale;
+
+//set ktory rowna sie ilosci zmapowanego product rate albo cos tkaiego  a values to wlasnie ratio albo cos usedcost
+
+//akcje i reducery trzeba ustawic wzgledem contextu
