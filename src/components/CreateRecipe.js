@@ -4,6 +4,7 @@ import M from "materialize-css";
 import TextInput from "./TextInput";
 import AddComponent from "./AddComponent";
 import ComponentList from "./ComponentList";
+import Collapsible from "./Collapsible";
 
 const CreateRecipe = () => {
   useEffect(() => {
@@ -58,37 +59,27 @@ const CreateRecipe = () => {
   };
 
   return (
-    <div>
-      <ul className='collapsible'>
-        <li>
-          <div className='collapsible-header'>
-            <i className='material-icons'> add_circle</i>
-            Create Reciple
-          </div>
-          <div className='collapsible-body card'>
-            <AddComponent addComponentToList={addComponentToList} />
-            <div className='divider'></div>
-            <div>
-              <ComponentList componentList={state.componentList} />
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className='input-field col s12'>
-                <input
-                  type='text'
-                  name='productName'
-                  className='validate'
-                  onChange={handleChange}
-                />
-                <label htmlFor='productName'>Product Name</label>
-              </div>
-              <button type='submit' className='btn'>
-                Submit
-              </button>
-            </form>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <Collapsible icon='add_circle' title='Create Reciple'>
+      <AddComponent addComponentToList={addComponentToList} />
+      <div className='divider'></div>
+      <div>
+        <ComponentList componentList={state.componentList} />
+      </div>
+      <form onSubmit={handleSubmit}>
+        <div className='input-field col s12'>
+          <input
+            type='text'
+            name='productName'
+            className='validate'
+            onChange={handleChange}
+          />
+          <label htmlFor='productName'>Product Name</label>
+        </div>
+        <button type='submit' className='btn'>
+          Submit
+        </button>
+      </form>
+    </Collapsible>
   );
 };
 

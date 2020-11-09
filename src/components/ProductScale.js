@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
+import Collapsible from "./Collapsible";
 
 const ProductScale = () => {
   useEffect(() => {
@@ -34,7 +35,8 @@ const ProductScale = () => {
         </form>
       );
     } else {
-      return parseFloat(component.productRatio * state.usedWeight).toFixed(2);
+      const totalWeight = component.productRatio * state.usedWeight;
+      return parseFloat(totalWeight).toFixed(2);
     }
   };
 
@@ -54,79 +56,63 @@ const ProductScale = () => {
     }
   };
 
-  const totalCost = (product) => {
+  const sumTotalCost = (product) => {
     const arr = product.componentList.map((component) => {
       return component.usedCost;
     });
-
     const totalValue = arr.reduce((prev, next) => {
       return prev + next;
     });
+
     return totalValue;
   };
 
+  const tableTitle = ["Name", "Weight", "Cost", "Used Weight"];
+
   return (
-    <div>
-      <ul className='collapsible'>
-        <li>
-          <div className='collapsible-header'>
-            <i className='material-icons'>eject</i>
-            Product Scale
-          </div>
-          <div className='collapsible-body'>
-            <div className=''>
-              <div className='card-content'>
-                <ul className='collapsible popout'>
-                  {productList.map((product) => {
-                    return (
-                      <li key={product.id}>
-                        <div className='collapsible-header'>
-                          {product.productName}
-                        </div>
-                        <div className='collapsible-body'>
-                          <div className=''>
-                            <h3>{product.productName}</h3>
-                            <table className='striped'>
-                              <thead>
-                                <tr>
-                                  <td>ID</td>
-                                  <td>Name</td>
-                                  <td>Weight</td>
-                                  <td>Costs</td>
-                                  <td>Used Weight</td>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {product.componentList.map((component) => {
-                                  return (
-                                    <tr key={component.id}>
-                                      <td>{component.id}</td>
-                                      <td>{component.ingredientName}</td>
-                                      <td>{component.componentWeight}</td>
-                                      <td>
-                                        {parseFloat(component.usedCost).toFixed(
-                                          2
-                                        )}
-                                      </td>
-                                      <td>{renderRatio(product, component)}</td>
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </table>
-                            <div>{totalCost(product)}</div>
-                          </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <Collapsible title='Product Scale' icon='eject'>
+      <div className='card-content'>
+        <ul className='collapsible popout'>
+          {productList.map((product) => {
+            return (
+              <li key={product.id}>
+                <div className='collapsible-header'>{product.productName}</div>
+                <div className='collapsible-body'>
+                  <div className=''>
+                    <h3>{product.productName}</h3>
+                    <table className='striped'>
+                      <thead>
+                        <tr>
+                          {tableTitle.map((title) => {
+                            return <td key={title}>{title}</td>;
+                          })}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {product.componentList.map((component) => {
+                          return (
+                            <tr key={component.id}>
+                              <td>{component.ingredientName}</td>
+                              <td>{component.componentWeight}</td>
+                              <td>
+                                {parseFloat(component.usedCost).toFixed(2)}
+                              </td>
+                              <td>{renderRatio(product, component)}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                    <div>{sumTotalCost(product)}</div>
+                    <div>total weight</div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </Collapsible>
   );
 };
 

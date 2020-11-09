@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { IngredientContext } from "../contexts/IngredientContex";
 import M from "materialize-css";
+import Collapsible from "./Collapsible";
 
 const AddIngredient = () => {
   const [state, setState] = useState({
@@ -38,57 +39,45 @@ const AddIngredient = () => {
   };
 
   return (
-    <div className=''>
-      <ul className='collapsible'>
-        <li>
-          <div className='collapsible-header'>
-            <i className='material-icons'> add_circle</i>
-            Add Ingredient
+    <Collapsible title='Add Ingredient' icon='add_circle'>
+      <div className='card-content'>
+        <form onSubmit={handleSubmit}>
+          <div className='input-field col s12'>
+            <input
+              type='text'
+              name='ingredientName'
+              className='validate'
+              value={state.ingredientName}
+              onChange={handleChange}
+            />
+            <label htmlFor='ingredientName'>Ingredient Name</label>
           </div>
-          <div className='collapsible-body'>
-            <div className=''>
-              <div className='card-content'>
-                <form onSubmit={handleSubmit}>
-                  <div className='input-field col s12'>
-                    <input
-                      type='text'
-                      name='ingredientName'
-                      className='validate'
-                      value={state.ingredientName}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor='ingredientName'>Ingredient Name</label>
-                  </div>
-                  <div className='input-field col s12'>
-                    <input
-                      type='number'
-                      className='validate'
-                      name='ingredientCost'
-                      value={state.ingredientCost}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor='ingredientCost'>Ingredient Cost</label>
-                  </div>
-                  <div className='input-field col s12'>
-                    <input
-                      type='number'
-                      name='ingredientWeight'
-                      className='validate'
-                      value={state.ingredientWeight}
-                      onChange={handleChange}
-                    />
-                    <label htmlFor='ingredientWeight'>Ingredient Weight</label>
-                  </div>
-                  <button type='submit' className='btn'>
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
+          <div className='input-field col s12'>
+            <input
+              type='number'
+              className='validate'
+              name='ingredientCost'
+              value={state.ingredientCost}
+              onChange={handleChange}
+            />
+            <label htmlFor='ingredientCost'>Ingredient Cost</label>
           </div>
-        </li>
-      </ul>
-    </div>
+          <div className='input-field col s12'>
+            <input
+              type='number'
+              name='ingredientWeight'
+              className='validate'
+              value={state.ingredientWeight}
+              onChange={handleChange}
+            />
+            <label htmlFor='ingredientWeight'>Ingredient Weight</label>
+          </div>
+          <button type='submit' className='btn'>
+            Submit
+          </button>
+        </form>
+      </div>
+    </Collapsible>
   );
 };
 

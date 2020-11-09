@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
+import { ProductContext } from "../contexts/ProductContext";
 
 const Test = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
 
+  const { productList } = useContext(ProductContext);
+
   const [state, setState] = useState({
-    first: "",
-    second: "",
-    third: "",
+    productName: "",
   });
 
   const handleChange = (event) => {
@@ -20,62 +21,33 @@ const Test = () => {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const products = productList.map((product) => {
+    return <option key={product.id}>{product.productName}</option>;
+  });
 
-    const test = { first: state.first, second: state.second };
-    console.log(test);
-  };
+  console.log(productList);
 
-  const handlethirdSubmit = (event) => {
-    event.preventDefault();
-    const third = state.third;
-    const ratio1 = state.second / state.first;
-    console.log("ratio1", ratio1);
-    console.log("drugi", third * ratio1);
+  const renderOptions = () => {
+    const products = productList;
+    return (
+      products &&
+      products.length > 0 &&
+      products.map((product, index) => {
+        return <option key={index}>{product.productName}</option>;
+      })
+    );
   };
 
   return (
     <Collapsible icon='add_circle' title='test'>
-      <div className=''>
-        <form onSubmit={handleSubmit}>
-          <div className='input-field col s12'>
-            <input
-              type='text'
-              name='first'
-              className='validate'
-              onChange={handleChange}
-            />
-            <label htmlFor='first'>first</label>
-          </div>
-          <div className='input-field col s12'>
-            <input
-              type='text'
-              name='second'
-              className='validate'
-              onChange={handleChange}
-            />
-            <label htmlFor='second'>second</label>
-          </div>
-          <button type='submit' className='btn'>
-            Submit
-          </button>
-        </form>
-        <form onSubmit={handlethirdSubmit}>
-          <div className='input-field col s12'>
-            <input
-              type='text'
-              name='third'
-              className='validate'
-              onChange={handleChange}
-            />
-            <label htmlFor='third'>third</label>
-          </div>
-          <button type='submit' className='btn'>
-            Submit
-          </button>
-        </form>
-        <div>value </div>
+      <div>
+        <select
+          name='productName'
+          value={state.productName}
+          onChange={handleChange}
+        >
+          {renderOptions()}
+        </select>
       </div>
     </Collapsible>
   );
