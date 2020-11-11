@@ -21,10 +21,6 @@ const Test = () => {
     });
   };
 
-  const products = productList.map((product) => {
-    return <option key={product.id}>{product.productName}</option>;
-  });
-
   const renderOptions = () => {
     const products = productList;
     return (
