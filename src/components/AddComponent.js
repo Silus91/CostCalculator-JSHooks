@@ -24,6 +24,8 @@ const AddComponent = ({ addComponentToList }) => {
       componentCost: parseFloat(
         state.ingredientRatio.split(" ")[0] * state.componentWeight
       ),
+      usedCost: 0,
+      usedWeight: 0,
     };
 
     addComponentToList(newComponent);

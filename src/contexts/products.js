@@ -10,6 +10,8 @@ export default [
         ingredientName: "kolor",
         ingredientRatio: 1.1,
         productRatio: 4545,
+        usedCost: 0,
+        usedWeight: 0,
       },
       {
         componentCost: 176.8,
@@ -18,6 +20,8 @@ export default [
         ingredientName: "swiezb",
         ingredientRatio: 5.2,
         productRatio: 20,
+        usedCost: 0,
+        usedWeight: 0,
       },
       {
         componentCost: 54,
@@ -26,6 +30,8 @@ export default [
         ingredientName: "olej",
         ingredientRatio: 1.5,
         productRatio: 56,
+        usedCost: 0,
+        usedWeight: 0,
       },
       {
         componentCost: 4969.5,
@@ -34,6 +40,8 @@ export default [
         ingredientName: "dsaa",
         ingredientRatio: 1.1,
         productRatio: 100,
+        usedCost: 0,
+        usedWeight: 0,
       },
     ],
   },

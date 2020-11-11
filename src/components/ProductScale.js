@@ -9,7 +9,7 @@ const ProductScale = () => {
   }, []);
 
   const [state, setState] = useState({
-    usedWeight: "",
+    usedWeight: 0,
     totalCost: "",
   });
 
@@ -21,10 +21,13 @@ const ProductScale = () => {
       [event.target.name]: event.target.value,
     });
   };
+  console.log(state.usedWeight);
 
   const renderRatio = (product, component) => {
     renderCosts(product, component);
     if (component.id === product.componentList[0].id) {
+      component.usedWeight = parseFloat(state.usedWeight);
+
       return (
         <form>
           <input
@@ -37,12 +40,11 @@ const ProductScale = () => {
       );
     } else {
       const usedProductWeight = component.productRatio * state.usedWeight;
-      console.log(usedProductWeight);
-
-      component.usedProductWeight = usedProductWeight;
+      component.usedWeight = usedProductWeight;
       return parseFloat(usedProductWeight).toFixed(2);
     }
   };
+  console.log(productList);
 
   const renderCosts = (product, component) => {
     let cost = costsCounter(product, component);
@@ -71,17 +73,29 @@ const ProductScale = () => {
     return totalValue;
   };
 
+  // const sumTotal = (mapArgument, asd) => {
+  //   const usedValueArray = mapArgument.componentList.map((component) => {
+  //     return asd;
+  //   });
+  //   const totalValue = usedValueArray.reduce((prev, next) => {
+  //     return prev + next;
+  //   });
+
+  //   return totalValue;
+  // };
+
   const sumTotalWeight = (product) => {
     const usedWeightArray = product.componentList.map((component) => {
-      return state.usedWeight + component.usedProductWeight;
+      return component.usedWeight;
     });
-    console.log(product);
+
+    console.log(usedWeightArray);
     const totalWeight = usedWeightArray.reduce((prev, next) => {
       return prev + next;
     });
-
     return totalWeight;
   };
+
   const tableTitle = ["Name", "Weight", "Cost", "Used Weight"];
 
   return (

@@ -27,8 +27,8 @@ const AddIngredient = () => {
     const newIngredient = {
       id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
       ingredientName: state.ingredientName,
-      ingredientCost: state.ingredientCost,
-      ingredientWeight: state.ingredientWeight,
+      ingredientCost: parseFloat(state.ingredientCost),
+      ingredientWeight: parseFloat(state.ingredientWeight),
       ingredientRatio: parseFloat(
         state.ingredientCost / state.ingredientWeight
       ),

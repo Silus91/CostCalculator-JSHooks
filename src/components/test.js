@@ -25,8 +25,6 @@ const Test = () => {
     return <option key={product.id}>{product.productName}</option>;
   });
 
-  console.log(productList);
-
   const renderOptions = () => {
     const products = productList;
     return (
