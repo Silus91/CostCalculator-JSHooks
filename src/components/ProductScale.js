@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
+import Divider from "./Divider";
 
 const ProductScale = () => {
   useEffect(() => {
@@ -10,7 +11,8 @@ const ProductScale = () => {
 
   const [state, setState] = useState({
     usedWeight: 0,
-    totalCost: "",
+    totalCost: 0,
+    totalWeight: 0,
   });
 
   const { productList } = useContext(ProductContext);
@@ -21,13 +23,11 @@ const ProductScale = () => {
       [event.target.name]: event.target.value,
     });
   };
-  console.log(state.usedWeight);
 
   const renderRatio = (product, component) => {
     renderCosts(product, component);
     if (component.id === product.componentList[0].id) {
       component.usedWeight = parseFloat(state.usedWeight);
-
       return (
         <form>
           <input
@@ -73,8 +73,8 @@ const ProductScale = () => {
     return totalValue;
   };
 
-  // const sumTotal = (mapArgument, asd) => {
-  //   const usedValueArray = mapArgument.componentList.map((component) => {
+  // const sumTotal = (mapArgument, mapedArg, asd) => {
+  //   const usedValueArray = mapArgument.componentList.map((mapedArg) => {
   //     return asd;
   //   });
   //   const totalValue = usedValueArray.reduce((prev, next) => {
@@ -89,7 +89,6 @@ const ProductScale = () => {
       return component.usedWeight;
     });
 
-    console.log(usedWeightArray);
     const totalWeight = usedWeightArray.reduce((prev, next) => {
       return prev + next;
     });
@@ -132,8 +131,9 @@ const ProductScale = () => {
                         })}
                       </tbody>
                     </table>
-                    <div>{sumTotalCost(product)}</div>
-                    <div>{sumTotalWeight(product)}</div>
+                    <div>{parseFloat(sumTotalCost(product)).toFixed(2)}</div>
+                    <div>{parseFloat(sumTotalWeight(product)).toFixed(2)}</div>
+                    <Divider totalValue={3} />
                   </div>
                 </div>
               </li>

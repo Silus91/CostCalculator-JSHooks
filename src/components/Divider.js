@@ -1,25 +1,17 @@
-import React, { useContext, useState } from "react";
-import { ComponentContext } from "../contexts/ComponentContext";
+import React, { useState } from "react";
 
-const Divider = () => {
-  const { componentList } = useContext(ComponentContext);
-
+const Divider = (props) => {
   const [state, setState] = useState({
     divider: "",
     valuePerItem: "",
   });
-  console.log(componentList);
   const handleChange = (event) => {
     setState({ ...state, divider: event.target.value });
   };
 
-  const totalCost = componentList
-    .reduce((prev, next) => prev + next.componentCost, 0)
-    .toFixed(2);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    setState({ ...state, valuePerItem: totalCost / state.divider });
+    setState({ ...state, valuePerItem: props.totalValue / state.divider });
   };
 
   const { divider, valuePerItem } = state;
@@ -42,7 +34,8 @@ const Divider = () => {
       </form>
       <span className='flow-text'>
         Total Value GBP
-        <p className='red-text'>{parseFloat(totalCost).toFixed(2)}</p>
+        {/* <p className='red-text'>{parseFloat(totalCost).toFixed(2)}</p> */}
+        {props.totalValue}
       </span>
       <br />
       <span className='flow-text'>
