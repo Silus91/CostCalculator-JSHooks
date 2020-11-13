@@ -1,30 +1,24 @@
-import react, { useState, createContext } from "react";
+import React, { useReducer, createContext } from "react";
+import { ingredientReducer } from "../reducers/ingredientReducer";
 import ingredients from "./ingredients";
 
 const INITIAL_STATE = ingredients;
-const IngredientContext = createContext();
+export const IngredientContext = createContext();
 
 const IngredientContexProvider = (props) => {
   const [ingredientsList, dispatch] = useReducer(
     ingredientReducer,
-    INITIAL_STATE,
-    init
+    INITIAL_STATE
   );
-
-  const addIngredientToList = (newIngredient) => {
-    this.setState({
-      ingredientList: [...this.state.ingredientList, newIngredient],
-    });
-  };
 
   return (
     <IngredientContext.Provider
       value={{
-        ...this.state,
-        addIngredientToList: this.addIngredientToList,
+        ingredientsList,
+        dispatch,
       }}
     >
-      {this.props.children}
+      {props.children}
     </IngredientContext.Provider>
   );
 };

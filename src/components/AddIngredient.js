@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
+import { INGREDIENT_ADD } from "../types/types";
+
 import { IngredientContext } from "../contexts/IngredientContex";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
+import { v1 as uuidv1 } from "uuid";
 
 const AddIngredient = () => {
   const [state, setState] = useState({
@@ -9,7 +12,7 @@ const AddIngredient = () => {
     ingredientCost: "",
     ingredientWeight: "",
   });
-  const { addIngredientToList } = useContext(IngredientContext);
+  const { dispatch } = useContext(IngredientContext);
 
   const handleChange = (event) => {
     setState({
@@ -25,7 +28,7 @@ const AddIngredient = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newIngredient = {
-      id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
+      id: uuidv1(),
       ingredientName: state.ingredientName,
       ingredientCost: parseFloat(state.ingredientCost),
       ingredientWeight: parseFloat(state.ingredientWeight),
@@ -33,7 +36,7 @@ const AddIngredient = () => {
         state.ingredientCost / state.ingredientWeight
       ),
     };
-    addIngredientToList(newIngredient);
+    dispatch({ type: INGREDIENT_ADD, payload: newIngredient });
     setState({ ingredientWeight: "", ingredientName: "", ingredientCost: "" });
     console.log(newIngredient);
   };

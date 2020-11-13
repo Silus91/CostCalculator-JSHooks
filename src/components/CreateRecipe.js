@@ -5,6 +5,7 @@ import TextInput from "./TextInput";
 import AddComponent from "./AddComponent";
 import ComponentList from "./ComponentList";
 import Collapsible from "./Collapsible";
+import { v1 as uuidv1 } from "uuid";
 
 const CreateRecipe = () => {
   useEffect(() => {
@@ -50,7 +51,7 @@ const CreateRecipe = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newProduct = {
-      id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
+      id: uuidv1(),
       productName: state.productName,
       componentList: state.componentList,
     };

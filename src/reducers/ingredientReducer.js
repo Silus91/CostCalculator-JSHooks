@@ -1,10 +1,30 @@
-// import React from "react";
+export const ingredientReducer = (state, action) => {
+  switch (action.type) {
+    case "INGREDIENT_ADD":
+      return [...state, action.payload];
+    case "INGREDIENT_DELETE":
+      return {
+        ...state,
+        ingredientsList: state.ingredientsList.filter(
+          (ingredient) => ingredient.id !== action.id
+        ),
+      };
 
-// const ingredientReducer = (state, action) => {
-//   switch (action.type) {
-//       case 'ADD_INGREDIENT':
-//           return[...state, {ingredientName:action.}]
-//   }
-// };
+    //   return {
+    //     ...state,
+    //     ingredientsList: state.ingredientsList.filter((ingredient) => {
+    //       return ingredient.id !== action.id;
+    //     }),
+    //   };
 
-// export default ingredientReducer;
+    //   return {
+    //     ...state,
+    //     clubs: state.clubs.filter(club => {
+    //       action = action as DeleteClubInterface;
+    //       return club.id !== action.clubId;
+    //     }),
+    //   };
+    default:
+      return state;
+  }
+};

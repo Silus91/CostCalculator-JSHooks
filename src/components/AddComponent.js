@@ -1,9 +1,10 @@
 import React, { useContext, useState, useEffect } from "react";
 import { IngredientContext } from "../contexts/IngredientContex";
 import M from "materialize-css";
+import { v1 as uuidv1 } from "uuid";
 
 const AddComponent = ({ addComponentToList }) => {
-  const { ingredientList } = useContext(IngredientContext);
+  const { ingredientsList } = useContext(IngredientContext);
   const [state, setState] = useState({
     componentWeight: "",
     ingredientRatio: "",
@@ -17,7 +18,7 @@ const AddComponent = ({ addComponentToList }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const newComponent = {
-      id: Math.floor(Math.random() * 1000000) + 1, //maybe later to change
+      id: uuidv1(),
       ingredientName: state.ingredientRatio.split(" ")[1], //todo with name more than 1 word
       ingredientRatio: parseFloat(state.ingredientRatio.split(" ")[0]),
       componentWeight: parseFloat(state.componentWeight),
@@ -46,7 +47,7 @@ const AddComponent = ({ addComponentToList }) => {
       <form onSubmit={handleSubmit}>
         <div className=''>
           <select name='ingredientRatio' onChange={handleChange}>
-            {ingredientList.map((ingredient) => {
+            {ingredientsList.map((ingredient) => {
               return (
                 <option
                   key={ingredient.id}
