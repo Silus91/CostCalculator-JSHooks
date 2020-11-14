@@ -15,7 +15,7 @@ const ProductScale = () => {
     totalWeight: 0,
   });
 
-  const { productList } = useContext(ProductContext);
+  const { productsList } = useContext(ProductContext);
 
   const handleChange = (event) => {
     setState({
@@ -44,7 +44,7 @@ const ProductScale = () => {
       return parseFloat(usedProductWeight).toFixed(2);
     }
   };
-  console.log(productList);
+  console.log(productsList);
 
   const renderCosts = (product, component) => {
     let cost = costsCounter(product, component);
@@ -101,7 +101,7 @@ const ProductScale = () => {
     <Collapsible title='Product Scale' icon='eject'>
       <div className='card-content'>
         <ul className='collapsible popout'>
-          {productList.map((product) => {
+          {productsList.map((product) => {
             return (
               <li key={product.id}>
                 <div className='collapsible-header'>{product.productName}</div>

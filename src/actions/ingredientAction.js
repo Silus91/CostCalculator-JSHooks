@@ -5,6 +5,5 @@ export const addIngredient = (newIngredient) => (dispatch) => {
 };
 
 export const deleteIngredient = (id) => (dispatch) => {
-  console.log(id);
   dispatch({ type: INGREDIENT_DELETE, payload: id });
 };

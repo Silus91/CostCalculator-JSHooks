@@ -6,6 +6,7 @@ import AddComponent from "./AddComponent";
 import ComponentList from "./ComponentList";
 import Collapsible from "./Collapsible";
 import { v1 as uuidv1 } from "uuid";
+import { PRODUCT_ADD } from "../types/types";
 
 const CreateRecipe = () => {
   useEffect(() => {
@@ -18,7 +19,8 @@ const CreateRecipe = () => {
     firstRatio: "",
   });
 
-  const { addProductToList } = useContext(ProductContext);
+  const { dispatch } = useContext(ProductContext);
+
   //might change name if this const in the future
   const mapData = (newComponent) => {
     if (state.componentList.length <= 0) {
@@ -55,8 +57,9 @@ const CreateRecipe = () => {
       productName: state.productName,
       componentList: state.componentList,
     };
-    addProductToList(newProduct);
-    setState({ ...state, productName: "", componentList: [] });
+    dispatch({ type: PRODUCT_ADD, payload: newProduct });
+    setState({ ...state, productName: "", componentList: [], firstRatio: "" });
+    console.log(newProduct);
   };
 
   return (

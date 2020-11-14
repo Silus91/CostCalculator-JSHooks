@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { INGREDIENT_ADD } from "../types/types";
-
 import { IngredientContext } from "../contexts/IngredientContex";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";

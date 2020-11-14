@@ -1,11 +1,11 @@
-export const ingredientReducer = (state, action) => {
+export const productReducer = (state, action) => {
   switch (action.type) {
-    case "INGREDIENT_ADD":
+    case "PRODUCT_ADD":
       return [...state, action.payload];
-    case "INGREDIENT_DELETE":
+    case "PRODUCT_DELETE":
       return {
         ...state,
-        ingredientsList: state.ingredientsList.filter(
+        productsList: state.ingredientsList.filter(
           (ingredient) => ingredient.id !== action.payload.id
         ),
       };

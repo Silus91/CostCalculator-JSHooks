@@ -8,13 +8,13 @@ const ProductList = () => {
     M.AutoInit();
   }, []);
 
-  const { productList } = useContext(ProductContext);
+  const { productsList } = useContext(ProductContext);
 
   return (
     <Collapsible title='Product List' icon='list'>
       <div className='card-content'>
         <ul className='collapsible popout'>
-          {productList.map((product) => {
+          {productsList.map((product) => {
             return (
               <li key={product.id}>
                 <div className='collapsible-header'>{product.productName}</div>
