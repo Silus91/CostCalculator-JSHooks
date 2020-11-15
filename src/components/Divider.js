@@ -11,7 +11,7 @@ const Divider = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setState({ ...state, valuePerItem: props.totalValue / state.divider });
+    setState({ ...state, valuePerItem: props.totalCost / state.divider });
   };
 
   const { divider, valuePerItem } = state;
@@ -34,14 +34,15 @@ const Divider = (props) => {
       </form>
       <span className='flow-text'>
         Total Value GBP
-        {/* <p className='red-text'>{parseFloat(totalCost).toFixed(2)}</p> */}
-        {props.totalValue}
+        <p className='red-text'>{parseFloat(props.totalCost).toFixed(2)}</p>
       </span>
       <br />
-      <span className='flow-text'>
-        Per 1 Item GBP
-        <p className='red-text'>{parseFloat(valuePerItem).toFixed(2)}</p>
-      </span>
+      Per 1 Item GBP
+      <p className='red-text'>{parseFloat(valuePerItem).toFixed(2)}</p>
+      Aproxx ~ Weight of 1 item +-
+      <p className='red-text'>
+        {parseFloat(props.totalWeight / divider).toFixed(2)}
+      </p>
     </div>
   );
 };

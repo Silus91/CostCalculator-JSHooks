@@ -9,12 +9,6 @@ export const ProductContext = createContext();
 const ProductContexProvider = (props) => {
   const [productsList, dispatch] = useReducer(productReducer, INITIAL_STATE);
 
-  // addProductToList = (newProduct) => {
-  //   this.setState({
-  //     productList: [...this.state.productList, newProduct],
-  //   });
-  // };
-
   return (
     <ProductContext.Provider value={{ productsList, dispatch }}>
       {props.children}

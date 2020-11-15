@@ -5,8 +5,8 @@ export const productReducer = (state, action) => {
     case "PRODUCT_DELETE":
       return {
         ...state,
-        productsList: state.ingredientsList.filter(
-          (ingredient) => ingredient.id !== action.payload.id
+        productsList: state.productsList.filter(
+          (product) => product.id !== action.payload.id
         ),
       };
     //todo be fixed delete

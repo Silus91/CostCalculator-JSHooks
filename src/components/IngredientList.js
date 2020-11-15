@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { IngredientContext } from "../contexts/IngredientContex";
 import { INGREDIENT_DELETE } from "../types/types";
+import AddIngredient from "./AddIngredient";
 
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
@@ -16,6 +17,7 @@ const IngredientList = () => {
   return (
     <Collapsible title='Ingredien List' icon='list'>
       <div className='card-content'>
+        <AddIngredient />
         <table className='striped'>
           <thead>
             <tr>

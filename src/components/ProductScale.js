@@ -73,17 +73,6 @@ const ProductScale = () => {
     return totalValue;
   };
 
-  // const sumTotal = (mapArgument, mapedArg, asd) => {
-  //   const usedValueArray = mapArgument.componentList.map((mapedArg) => {
-  //     return asd;
-  //   });
-  //   const totalValue = usedValueArray.reduce((prev, next) => {
-  //     return prev + next;
-  //   });
-
-  //   return totalValue;
-  // };
-
   const sumTotalWeight = (product) => {
     const usedWeightArray = product.componentList.map((component) => {
       return component.usedWeight;
@@ -92,10 +81,11 @@ const ProductScale = () => {
     const totalWeight = usedWeightArray.reduce((prev, next) => {
       return prev + next;
     });
+
     return totalWeight;
   };
 
-  const tableTitle = ["Name", "Weight", "Cost", "Used Weight"];
+  const tableTitle = ["Name", "Weight", "Cost", "Used Cost"];
 
   return (
     <Collapsible title='Product Scale' icon='eject'>
@@ -122,6 +112,8 @@ const ProductScale = () => {
                             <tr key={component.id}>
                               <td>{component.ingredientName}</td>
                               <td>{component.componentWeight}</td>
+                              <td>{component.productRatio}</td>
+
                               <td>
                                 {parseFloat(component.usedCost).toFixed(2)}
                               </td>
@@ -131,8 +123,13 @@ const ProductScale = () => {
                         })}
                       </tbody>
                     </table>
-                    <div>{parseFloat(sumTotalCost(product)).toFixed(2)}</div>
-                    <div>{parseFloat(sumTotalWeight(product)).toFixed(2)}</div>
+                    <div>
+                      Total Cost{parseFloat(sumTotalCost(product)).toFixed(2)}
+                    </div>
+                    <div>
+                      Total Weight
+                      {parseFloat(sumTotalWeight(product)).toFixed(2)}
+                    </div>
                     <Divider totalValue={3} />
                   </div>
                 </div>
@@ -146,7 +143,3 @@ const ProductScale = () => {
 };
 
 export default ProductScale;
-
-//set ktory rowna sie ilosci zmapowanego product rate albo cos tkaiego  a values to wlasnie ratio albo cos usedcost
-
-//akcje i reducery trzeba ustawic wzgledem contextu

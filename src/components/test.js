@@ -1,50 +1,29 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
-import { ProductContext } from "../contexts/ProductContext";
+import ProductTable from "./ProductTable";
 
-const Test = () => {
+const ProductScale = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
 
-  const { productList } = useContext(ProductContext);
-
-  const [state, setState] = useState({
-    productName: "",
-  });
-
-  const handleChange = (event) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const renderOptions = () => {
-    const products = productList;
-    return (
-      products &&
-      products.length > 0 &&
-      products.map((product, index) => {
-        return <option key={index}>{product.productName}</option>;
-      })
-    );
-  };
+  const { productsList } = useContext(ProductContext);
 
   return (
-    <Collapsible icon='add_circle' title='test'>
-      <div>
-        <select
-          name='productName'
-          value={state.productName}
-          onChange={handleChange}
-        >
-          {renderOptions()}
-        </select>
+    <Collapsible title='test' icon='eject'>
+      <div className='card-content'>
+        {productsList.map((product) => {
+          return (
+            <ul key={product.id} className='collapsible popout'>
+              <ProductTable product={product} />
+            </ul>
+          );
+        })}
       </div>
     </Collapsible>
   );
 };
 
-export default Test;
+export default ProductScale;

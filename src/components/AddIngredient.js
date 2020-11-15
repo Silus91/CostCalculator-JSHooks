@@ -24,8 +24,7 @@ const AddIngredient = () => {
     M.AutoInit();
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const dataMap = () => {
     const newIngredient = {
       id: uuidv1(),
       ingredientName: state.ingredientName,
@@ -35,6 +34,12 @@ const AddIngredient = () => {
         state.ingredientCost / state.ingredientWeight
       ),
     };
+    return newIngredient;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newIngredient = dataMap();
     dispatch({ type: INGREDIENT_ADD, payload: newIngredient });
     setState({ ingredientWeight: "", ingredientName: "", ingredientCost: "" });
     console.log(newIngredient);
@@ -74,7 +79,16 @@ const AddIngredient = () => {
             />
             <label htmlFor='ingredientWeight'>Ingredient Weight</label>
           </div>
-          <button type='submit' className='btn'>
+          <button
+            type='submit'
+            className={
+              state.ingredientCost <= 0 ||
+              state.ingredientName <= 0 ||
+              state.ingredientWeight <= 0
+                ? "btn disabled"
+                : "btn teal darken-2 z-depth-2"
+            }
+          >
             Submit
           </button>
         </form>
