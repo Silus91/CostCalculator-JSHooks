@@ -41,21 +41,6 @@ const ProductTable = (props) => {
     });
   };
 
-  //   const sumTotal = (eventTargetValue, arg) => {
-  //     const arr = props.product.componentList.map((component) => {
-  //       if (component.id === props.product.componentList[0].id) {
-  //         return eventTargetValue * arg;
-  //       } else {
-  //         return (
-  //           component.productRatio * eventTargetValue * arg
-  //         );
-  //       }
-  //     });
-  //     return arr.reduce((prev, next) => {
-  //       return prev + next;
-  //     });
-  //   };
-
   const totalWeight = (eventTargetValue) => {
     const arr = props.product.componentList.map((component) => {
       if (component.id === props.product.componentList[0].id) {
@@ -133,3 +118,18 @@ const ProductTable = (props) => {
 };
 
 export default ProductTable;
+
+//   const sumTotal = (eventTargetValue, arg) => {
+//     const arr = props.product.componentList.map((component) => {
+//       if (component.id === props.product.componentList[0].id) {
+//         return eventTargetValue * arg;
+//       } else {
+//         return (
+//           component.productRatio * eventTargetValue * arg
+//         );
+//       }
+//     });
+//     return arr.reduce((prev, next) => {
+//       return prev + next;
+//     });
+//   };

@@ -44,7 +44,6 @@ const ProductScale = () => {
       return parseFloat(usedProductWeight).toFixed(2);
     }
   };
-  console.log(productsList);
 
   const renderCosts = (product, component) => {
     let cost = costsCounter(product, component);

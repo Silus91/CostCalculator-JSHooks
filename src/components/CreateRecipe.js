@@ -88,3 +88,6 @@ const CreateRecipe = () => {
 };
 
 export default CreateRecipe;
+
+//wyczyscic statea
+//zrobic updata na ingredients list

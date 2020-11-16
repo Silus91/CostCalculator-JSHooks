@@ -53,4 +53,3 @@ const IngredientList = () => {
 };
 
 export default IngredientList;
-//44

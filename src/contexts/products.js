@@ -10,8 +10,6 @@ export default [
         ingredientName: "kolor",
         ingredientRatio: 1,
         productRatio: 100,
-        usedCost: 0,
-        usedWeight: 0,
       },
       {
         componentCost: 50,
@@ -20,8 +18,6 @@ export default [
         ingredientName: "swiezb",
         ingredientRatio: 0.05,
         productRatio: 20,
-        usedCost: 0,
-        usedWeight: 0,
       },
       {
         componentCost: 54,
@@ -30,8 +26,6 @@ export default [
         ingredientName: "olej",
         ingredientRatio: 1.5,
         productRatio: 56,
-        usedCost: 0,
-        usedWeight: 0,
       },
       {
         componentCost: 4969.5,
@@ -40,8 +34,6 @@ export default [
         ingredientName: "dsaa",
         ingredientRatio: 1.1,
         productRatio: 100,
-        usedCost: 0,
-        usedWeight: 0,
       },
     ],
   },
@@ -56,8 +48,6 @@ export default [
         ingredientName: "mydlo",
         ingredientRatio: 0.0047272727272727275,
         productRatio: 500,
-        usedCost: 0,
-        usedWeight: 0,
       },
       {
         componentCost: 0.8,
@@ -66,8 +56,6 @@ export default [
         ingredientName: "Kolor",
         ingredientRatio: 0.04,
         productRatio: 0.04,
-        usedCost: 0,
-        usedWeight: 0,
       },
       {
         componentCost: 37.5,
@@ -76,8 +64,6 @@ export default [
         ingredientName: "Sol",
         ingredientRatio: 0.25,
         productRatio: 0.3,
-        usedCost: 0,
-        usedWeight: 0,
       },
     ],
   },

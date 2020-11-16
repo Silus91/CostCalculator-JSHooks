@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import CreateRecipe from "./components/CreateRecipe";
 import IngredientContexProvider from "./contexts/IngredientContex";
+import IngContextProvider from "./contexts/ingContext";
 import ProductContexProvider from "./contexts/ProductContext";
 import M from "materialize-css";
 import IngredientList from "./components/IngredientList";
@@ -16,15 +17,17 @@ function App() {
 
   return (
     <div className='container'>
-      <IngredientContexProvider>
-        <ProductContexProvider>
-          <IngredientList />
-          <CreateRecipe />
-          <ProductList />
-          <ProductScale />
-          <Test />
-        </ProductContexProvider>
-      </IngredientContexProvider>
+      <IngContextProvider>
+        <IngredientContexProvider>
+          <ProductContexProvider>
+            <IngredientList />
+            <CreateRecipe />
+            <ProductList />
+            <ProductScale />
+            <Test />
+          </ProductContexProvider>
+        </IngredientContexProvider>
+      </IngContextProvider>
     </div>
   );
 }

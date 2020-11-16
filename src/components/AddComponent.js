@@ -1,20 +1,21 @@
 import React, { useContext, useState, useEffect } from "react";
-import { IngredientContext } from "../contexts/IngredientContex";
 import M from "materialize-css";
 import { v1 as uuidv1 } from "uuid";
+import { IngredientsContext } from "../contexts/ingContext";
 
 const AddComponent = ({ addComponentToList }) => {
-  const { ingredientsList } = useContext(IngredientContext);
   const [state, setState] = useState({
     componentWeight: "",
     ingredientRatio: "",
-    componentName: "",
   });
+
+  const { ingredientsList } = useContext(IngredientsContext);
 
   useEffect(() => {
     M.AutoInit();
   }, []);
 
+  console.log(ingredientsList);
   const handleSubmit = (event) => {
     event.preventDefault();
     const newComponent = {
@@ -25,8 +26,6 @@ const AddComponent = ({ addComponentToList }) => {
       componentCost: parseFloat(
         state.ingredientRatio.split(" ")[0] * state.componentWeight
       ),
-      usedCost: 0,
-      usedWeight: 0,
     };
 
     addComponentToList(newComponent);
@@ -34,6 +33,7 @@ const AddComponent = ({ addComponentToList }) => {
   };
 
   const handleChange = (event) => {
+    console.log(event.target.label);
     setState({
       ...state,
       [event.target.name]: event.target.value,
@@ -47,12 +47,13 @@ const AddComponent = ({ addComponentToList }) => {
       <form onSubmit={handleSubmit}>
         <div className=''>
           <select name='ingredientRatio' onChange={handleChange}>
+            <option defaultSelected> Select one</option>
             {ingredientsList.map((ingredient) => {
               return (
                 <option
                   key={ingredient.id}
                   value={`${ingredient.ingredientRatio} ${ingredient.ingredientName}`}
-                  label={ingredient.ingredientName}
+                  label={1}
                 >
                   {ingredient.ingredientName}
                 </option>

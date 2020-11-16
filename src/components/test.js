@@ -3,11 +3,14 @@ import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
 import ProductTable from "./ProductTable";
+import { IngredientContext } from "../contexts/IngredientContex";
 
 const ProductScale = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
+
+  const { ingredientsList } = useContext(IngredientContext);
 
   const { productsList } = useContext(ProductContext);
 
@@ -21,6 +24,15 @@ const ProductScale = () => {
             </ul>
           );
         })}
+      </div>
+      <div>
+        <form>
+          <select>
+            {ingredientsList.map((ingredient) => {
+              return <option key={ingredient.id}>{ingredient.id}</option>;
+            })}
+          </select>
+        </form>
       </div>
     </Collapsible>
   );
