@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { IngredientContext } from "../contexts/IngredientContex";
+import { IngredientContext } from "../contexts/IngredientContext";
 import { INGREDIENT_DELETE } from "../types/types";
 import AddIngredient from "./AddIngredient";
 

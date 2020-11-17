@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { INGREDIENT_ADD } from "../types/types";
-import { IngredientContext } from "../contexts/IngredientContex";
+import { IngredientContext } from "../contexts/IngredientContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
 import { v1 as uuidv1 } from "uuid";

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import M from "materialize-css";
 import { v1 as uuidv1 } from "uuid";
-import { IngredientsContext } from "../contexts/ingContext";
+import { IngredientContext } from "../contexts/IngredientContext";
 
 const AddComponent = ({ addComponentToList }) => {
   const [state, setState] = useState({
@@ -9,7 +9,7 @@ const AddComponent = ({ addComponentToList }) => {
     ingredientRatio: "",
   });
 
-  const { ingredientsList } = useContext(IngredientsContext);
+  const { ingredientsList } = useContext(IngredientContext);
 
   useEffect(() => {
     M.AutoInit();
@@ -20,14 +20,13 @@ const AddComponent = ({ addComponentToList }) => {
     event.preventDefault();
     const newComponent = {
       id: uuidv1(),
-      ingredientName: state.ingredientRatio.split(" ")[1], //todo with name more than 1 word
+      ingredientName: state.ingredientRatio.replace(/[0-9.]/g, ""),
       ingredientRatio: parseFloat(state.ingredientRatio.split(" ")[0]),
       componentWeight: parseFloat(state.componentWeight),
       componentCost: parseFloat(
         state.ingredientRatio.split(" ")[0] * state.componentWeight
       ),
     };
-
     addComponentToList(newComponent);
     setState({ ...state, componentWeight: "", ingredientRatio: "" });
   };
@@ -40,14 +39,12 @@ const AddComponent = ({ addComponentToList }) => {
     });
   };
 
-  //test dla ingredient ratio zeby bylo arrayem i zeby bylko latwiej dostac te value jeseli sie da i potem przerobic z powrotem na string albo number
-
   return (
     <div className='card-content'>
       <form onSubmit={handleSubmit}>
         <div className=''>
           <select name='ingredientRatio' onChange={handleChange}>
-            <option defaultSelected> Select one</option>
+            <option> Select one</option>
             {ingredientsList.map((ingredient) => {
               return (
                 <option

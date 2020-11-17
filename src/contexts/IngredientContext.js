@@ -5,7 +5,7 @@ import ingredients from "./ingredients";
 const INITIAL_STATE = ingredients;
 export const IngredientContext = createContext();
 
-const IngredientContexProvider = (props) => {
+const IngredientContextProvider = (props) => {
   const [ingredientsList, dispatch] = useReducer(
     ingredientReducer,
     INITIAL_STATE
@@ -23,4 +23,4 @@ const IngredientContexProvider = (props) => {
   );
 };
 
-export default IngredientContexProvider;
+export default IngredientContextProvider;
