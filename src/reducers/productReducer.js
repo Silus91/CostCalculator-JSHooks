@@ -3,10 +3,11 @@ export const productReducer = (state, action) => {
     case "PRODUCT_ADD":
       return [...state, action.payload];
     case "PRODUCT_DELETE":
+      console.log(state);
       return {
         ...state,
         productsList: state.productsList.filter(
-          (product) => product.id !== action.payload.id
+          (product) => product.id !== action.payload
         ),
       };
     //todo be fixed delete

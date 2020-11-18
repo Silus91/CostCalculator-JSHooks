@@ -1,15 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import M from "materialize-css";
 import { v1 as uuidv1 } from "uuid";
-import { IngredientContext } from "../contexts/IngredientContext";
+import { Button } from "./Button";
 
-const AddComponent = ({ addComponentToList }) => {
+const AddComponent = ({ addComponentToList, ingredientsList }) => {
   const [state, setState] = useState({
     componentWeight: "",
     ingredientRatio: "",
   });
-
-  const { ingredientsList } = useContext(IngredientContext);
 
   useEffect(() => {
     M.AutoInit();
@@ -32,32 +30,34 @@ const AddComponent = ({ addComponentToList }) => {
   };
 
   const handleChange = (event) => {
-    console.log(event.target.label);
     setState({
       ...state,
       [event.target.name]: event.target.value,
     });
   };
 
+  const renderSelect = () => {
+    return (
+      <select name='ingredientRatio' onChange={handleChange}>
+        <option> Select one</option>
+        {ingredientsList.map((ingredient) => {
+          return (
+            <option
+              key={ingredient.id}
+              value={`${ingredient.ingredientRatio} ${ingredient.ingredientName}`}
+            >
+              {ingredient.ingredientName}
+            </option>
+          );
+        })}
+      </select>
+    );
+  };
+
   return (
     <div className='card-content'>
       <form onSubmit={handleSubmit}>
-        <div className=''>
-          <select name='ingredientRatio' onChange={handleChange}>
-            <option> Select one</option>
-            {ingredientsList.map((ingredient) => {
-              return (
-                <option
-                  key={ingredient.id}
-                  value={`${ingredient.ingredientRatio} ${ingredient.ingredientName}`}
-                  label={1}
-                >
-                  {ingredient.ingredientName}
-                </option>
-              );
-            })}
-          </select>
-        </div>
+        <div className=''>{renderSelect()}</div>
         <div className='input-field col s12'>
           <input
             type='number'
@@ -68,9 +68,15 @@ const AddComponent = ({ addComponentToList }) => {
           />
           <label htmlFor='componentWeight'>Component Weight</label>
         </div>
-        <button type='submit' className='btn teal darken-2 z-depth-2'>
-          Submit
-        </button>
+        <Button
+          type='submit'
+          className={
+            state.componentWeight <= 0
+              ? "btn disabled"
+              : "btn teal darken-2 z-depth-2"
+          }
+          text='submit'
+        />
       </form>
     </div>
   );

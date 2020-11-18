@@ -2,13 +2,14 @@ import React, { useEffect, useContext } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
+import { PRODUCT_DELETE } from "../types/types";
 
 const ProductList = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
 
-  const { productsList } = useContext(ProductContext);
+  const { productsList, dispatch } = useContext(ProductContext);
 
   return (
     <Collapsible title='Product List' icon='list'>
@@ -17,10 +18,22 @@ const ProductList = () => {
           {productsList.map((product) => {
             return (
               <li key={product.id}>
-                <div className='collapsible-header'>{product.productName}</div>
+                <div className='collapsible-header'>
+                  <p>{product.productName}</p>
+                </div>
                 <div className='collapsible-body'>
                   <div className=''>
                     <h3>{product.productName}</h3>
+                    <button
+                      onClick={() =>
+                        dispatch({
+                          type: PRODUCT_DELETE,
+                          payload: product.id,
+                        })
+                      }
+                    >
+                      <i className='material-icons'>delete_forever</i>
+                    </button>
                     <table className='striped'>
                       <thead>
                         <tr>

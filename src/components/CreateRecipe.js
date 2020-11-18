@@ -7,6 +7,8 @@ import ComponentList from "./ComponentList";
 import Collapsible from "./Collapsible";
 import { v1 as uuidv1 } from "uuid";
 import { PRODUCT_ADD } from "../types/types";
+import { Button } from "./Button";
+import { IngredientContext } from "../contexts/IngredientContext";
 
 const CreateRecipe = () => {
   useEffect(() => {
@@ -18,6 +20,8 @@ const CreateRecipe = () => {
     componentList: [],
     firstRatio: "",
   });
+
+  const { ingredientsList } = useContext(IngredientContext);
 
   const { dispatch } = useContext(ProductContext);
 
@@ -58,13 +62,21 @@ const CreateRecipe = () => {
       componentList: state.componentList,
     };
     dispatch({ type: PRODUCT_ADD, payload: newProduct });
-    setState({ ...state, productName: "", componentList: [], firstRatio: "" });
+    setState({
+      ...state,
+      productName: "",
+      componentList: [],
+      firstRatio: "",
+    });
     console.log(newProduct);
   };
 
   return (
     <Collapsible icon='add_circle' title='Create Reciple'>
-      <AddComponent addComponentToList={addComponentToList} />
+      <AddComponent
+        addComponentToList={addComponentToList}
+        ingredientsList={ingredientsList}
+      />
       <div className='divider'></div>
       <div>
         <ComponentList componentList={state.componentList} />
@@ -74,14 +86,21 @@ const CreateRecipe = () => {
           <input
             type='text'
             name='productName'
+            value={state.productName}
             className='validate'
             onChange={handleChange}
           />
           <label htmlFor='productName'>Product Name</label>
         </div>
-        <button type='submit' className='btn'>
-          Submit
-        </button>
+        <Button
+          type='submit'
+          className={
+            state.productName <= 0
+              ? "btn disabled"
+              : "btn teal darken-2 z-depth-2"
+          }
+          text='Submit'
+        />
       </form>
     </Collapsible>
   );

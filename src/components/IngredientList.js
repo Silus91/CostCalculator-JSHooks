@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import { IngredientContext } from "../contexts/IngredientContext";
 import { INGREDIENT_DELETE } from "../types/types";
 import AddIngredient from "./AddIngredient";
-
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
 
@@ -12,8 +11,8 @@ const IngredientList = () => {
   }, []);
 
   const { ingredientsList, dispatch } = useContext(IngredientContext);
+
   const tableTitle = ["Name", "Weight", "Price", "Actions"];
-  console.log();
   return (
     <Collapsible title='Ingredien List' icon='list'>
       <div className='card-content'>
@@ -36,7 +35,10 @@ const IngredientList = () => {
                   <td>
                     <button
                       onClick={() =>
-                        dispatch({ type: INGREDIENT_DELETE, id: ingredient.id })
+                        dispatch({
+                          type: INGREDIENT_DELETE,
+                          payload: ingredient.id,
+                        })
                       }
                     >
                       Delete
