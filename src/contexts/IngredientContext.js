@@ -2,14 +2,11 @@ import React, { useReducer, createContext } from "react";
 import { ingredientReducer } from "../reducers/ingredientReducer";
 import ingredients from "./ingredients";
 
-const INITIAL_STATE = ingredients;
+const list = ingredients;
 export const IngredientContext = createContext();
 
 const IngredientContextProvider = (props) => {
-  const [ingredientsList, dispatch] = useReducer(
-    ingredientReducer,
-    INITIAL_STATE
-  );
+  const [ingredientsList, dispatch] = useReducer(ingredientReducer, list);
 
   return (
     <IngredientContext.Provider

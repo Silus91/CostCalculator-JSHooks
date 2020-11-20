@@ -11,6 +11,7 @@ const ProductList = () => {
 
   const { productsList, dispatch } = useContext(ProductContext);
 
+  console.log(productsList);
   return (
     <Collapsible title='Product List' icon='list'>
       <div className='card-content'>

@@ -4,6 +4,7 @@ import { IngredientContext } from "../contexts/IngredientContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
 import { v1 as uuidv1 } from "uuid";
+import TextInput from "./TextInput";
 
 const AddIngredient = () => {
   const [state, setState] = useState({
@@ -49,36 +50,33 @@ const AddIngredient = () => {
     <Collapsible title='Add Ingredient' icon='add_circle'>
       <div className='card-content'>
         <form onSubmit={handleSubmit}>
-          <div className='input-field col s12'>
-            <input
-              type='text'
-              name='ingredientName'
-              className='validate'
-              value={state.ingredientName}
-              onChange={handleChange}
-            />
-            <label htmlFor='ingredientName'>Ingredient Name</label>
-          </div>
-          <div className='input-field col s12'>
-            <input
-              type='number'
-              className='validate'
-              name='ingredientCost'
-              value={state.ingredientCost}
-              onChange={handleChange}
-            />
-            <label htmlFor='ingredientCost'>Ingredient Cost</label>
-          </div>
-          <div className='input-field col s12'>
-            <input
-              type='number'
-              name='ingredientWeight'
-              className='validate'
-              value={state.ingredientWeight}
-              onChange={handleChange}
-            />
-            <label htmlFor='ingredientWeight'>Ingredient Weight</label>
-          </div>
+          <TextInput
+            type='text'
+            name='ingredientName'
+            className='validate'
+            value={state.ingredientName}
+            onChange={handleChange}
+            htmlFor='ingredientName'
+            label='Ingredient Name'
+          />
+          <TextInput
+            type='number'
+            className='validate'
+            name='ingredientCost'
+            value={state.ingredientCost}
+            onChange={handleChange}
+            htmlFor='ingredientCost'
+            label='Ingredient Cost'
+          />
+          <TextInput
+            type='number'
+            className='validate'
+            name='ingredientWeight'
+            value={state.ingredientWeight}
+            onChange={handleChange}
+            htmlFor='ingredientWeight'
+            label='Ingredient Weight'
+          />
           <button
             type='submit'
             className={

@@ -3,22 +3,9 @@ export const ingredientReducer = (state, action) => {
     case "INGREDIENT_ADD":
       return [...state, action.payload];
     case "INGREDIENT_DELETE":
-      const newList = state.ingredientsList.filter(
-        (ingre) => ingre.id !== action.payload
-      );
-      return { ...state, ingredientsList: newList };
+      return state.filter((ingredient) => ingredient.id !== action.payload);
 
-    //todo be fixed delete
     default:
       return state;
   }
 };
-
-// state.ingredientsList.filter((ing) => ing.id !== action.id);
-
-// return {
-//   ...state,
-//   state: state.ingredientsList.filter(
-//     (ingredient) => ingredient.id !== action.payload
-//   ),
-// };

@@ -4,12 +4,8 @@ export const productReducer = (state, action) => {
       return [...state, action.payload];
     case "PRODUCT_DELETE":
       console.log(state);
-      return {
-        ...state,
-        productsList: state.productsList.filter(
-          (product) => product.id !== action.payload
-        ),
-      };
+      return state.filter((product) => product.id !== action.payload);
+
     //todo be fixed delete
     default:
       return state;

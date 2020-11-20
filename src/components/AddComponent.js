@@ -13,7 +13,6 @@ const AddComponent = ({ addComponentToList, ingredientsList }) => {
     M.AutoInit();
   }, []);
 
-  console.log(ingredientsList);
   const handleSubmit = (event) => {
     event.preventDefault();
     const newComponent = {

@@ -4,15 +4,24 @@ import { INGREDIENT_DELETE } from "../types/types";
 import AddIngredient from "./AddIngredient";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
+import EditIngredient from "./EditIngredient";
 
 const IngredientList = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
 
+  const deleteIngredient = (id) => {
+    return dispatch({
+      type: INGREDIENT_DELETE,
+      payload: id,
+    });
+  };
+
   const { ingredientsList, dispatch } = useContext(IngredientContext);
 
   const tableTitle = ["Name", "Weight", "Price", "Actions"];
+  console.log(ingredientsList);
   return (
     <Collapsible title='Ingredien List' icon='list'>
       <div className='card-content'>
@@ -33,22 +42,17 @@ const IngredientList = () => {
                   <td>{ingredient.ingredientWeight}</td>
                   <td>{ingredient.ingredientCost}</td>
                   <td>
-                    <button
-                      onClick={() =>
-                        dispatch({
-                          type: INGREDIENT_DELETE,
-                          payload: ingredient.id,
-                        })
-                      }
-                    >
+                    <button onClick={() => deleteIngredient(ingredient.id)}>
                       Delete
                     </button>
+                    <EditIngredient ingredient={ingredient} />
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+        {/* <EditIngredient /> */}
       </div>
     </Collapsible>
   );
