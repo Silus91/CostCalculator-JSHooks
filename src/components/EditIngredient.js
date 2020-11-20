@@ -13,14 +13,17 @@ const EditIngredient = (props) => {
   });
   useEffect(() => {
     M.AutoInit();
-    setState({
-      ...state,
-      ingredientName: props.ingredient.ingredientName,
-      ingredientCost: props.ingredient.ingredientCost,
-      ingredientWeight: props.ingredient.ingredientWeight,
-    });
+    if (props.ingredient) {
+      setState({
+        ...state,
+        ingredientName: props.ingredient.ingredientName,
+        ingredientCost: props.ingredient.ingredientCost,
+        ingredientWeight: props.ingredient.ingredientWeight,
+      });
+    }
   }, []);
 
+  //if props 0 trzeba napisac ze ma nie dawac propsow kiedy ich niema jak sa to sa ma wiedziec kiedy update a kiedy create
   const handleChange = (event) => {
     setState({
       ...state,
@@ -32,23 +35,15 @@ const EditIngredient = (props) => {
     event.preventDefault();
   };
 
-  const renderId = (id) => {
-    if (id) {
-      return id;
-    } else {
-      return "#id";
-    }
-  };
-
   return (
     <div>
       <a
         className='waves-effect waves-light btn modal-trigger'
-        data-target={renderId(props.ingredient.id)}
+        data-target={props.id}
       >
         Edit
       </a>
-      <div id={renderId(props.ingredient.id)} className='modal'>
+      <div id={props.id} className='modal'>
         <form onSubmit={handleSubmit}>
           <div className='modal-content'>
             <TextInput

@@ -45,14 +45,17 @@ const IngredientList = () => {
                     <button onClick={() => deleteIngredient(ingredient.id)}>
                       Delete
                     </button>
-                    <EditIngredient ingredient={ingredient} />
+                    <EditIngredient
+                      id={ingredient.id}
+                      ingredient={ingredient}
+                    />
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
-        {/* <EditIngredient /> */}
+        <EditIngredient id='#id' />
       </div>
     </Collapsible>
   );
