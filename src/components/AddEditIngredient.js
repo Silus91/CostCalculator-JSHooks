@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { INGREDIENT_ADD, INGREDIENT_EDIT } from "../types/types";
-
 import M from "materialize-css";
 import TextInput from "./TextInput";
 import { IngredientContext } from "../contexts/IngredientContext";
 import { v1 as uuidv1 } from "uuid";
 import { Button } from "./Button";
 
-const EditIngredient = (props) => {
+const AddEditIngredient = (props) => {
   const { dispatch } = useContext(IngredientContext);
 
   const [state, setState] = useState({
@@ -59,7 +58,6 @@ const EditIngredient = (props) => {
     } else {
       dispatch({ type: INGREDIENT_ADD, payload: newIngredient });
     }
-
     setState({ ingredientWeight: "", ingredientName: "", ingredientCost: "" });
     console.log(newIngredient);
   };
@@ -76,7 +74,7 @@ const EditIngredient = (props) => {
       <div id={props.id} className='modal'>
         <form onSubmit={handleSubmit}>
           <div className='modal-content'>
-            <h4> {props.ingredient ? "Edit" : "Add New"}</h4>
+            <h4> {props.ingredient ? "Edit" : "Add New Ingredient"}</h4>
             <TextInput
               type='text'
               name='ingredientName'
@@ -126,4 +124,4 @@ const EditIngredient = (props) => {
   );
 };
 
-export default EditIngredient;
+export default AddEditIngredient;

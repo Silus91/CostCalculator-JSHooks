@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "./Button";
+import TextInput from "./TextInput";
 
 const Divider = (props) => {
   const [state, setState] = useState({
@@ -18,19 +20,24 @@ const Divider = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className='input-field col s12'>
-          <input
-            type='number'
-            name='divider'
-            className='validate'
-            value={divider}
-            onChange={handleChange}
-          />
-          <label htmlFor='divider'>Divider</label>
-        </div>
-        <button type='submit' className='btn teal darken-2 z-depth-2'>
-          Submit
-        </button>
+        <TextInput
+          type='number'
+          className='validate'
+          name='divider'
+          value={divider}
+          onChange={handleChange}
+          htmlFor='divider'
+          label='Divider'
+        />
+        <Button
+          type='submit'
+          className={
+            divider <= 0
+              ? "btn disabled"
+              : "btn teal darken-2 z-depth-2 modal-close"
+          }
+          text='Divide'
+        />
       </form>
       <span className='flow-text'>
         Total Value GBP

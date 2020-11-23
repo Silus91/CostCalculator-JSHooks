@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import M from "materialize-css";
 import Divider from "./Divider";
+import TextInput from "./TextInput";
 
 const ProductTable = (props) => {
   useEffect(() => {
@@ -61,11 +62,13 @@ const ProductTable = (props) => {
       component.usedWeight = parseFloat(state.usedWeight);
       return (
         <form>
-          <input
+          <TextInput
             type='number'
             name='usedWeight'
             className='validate'
             onChange={handleChange}
+            htmlFor='usedWeight'
+            label='Used Weight'
           />
         </form>
       );

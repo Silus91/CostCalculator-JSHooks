@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { IngredientContext } from "../contexts/IngredientContext";
 import { INGREDIENT_DELETE } from "../types/types";
-import AddIngredient from "./AddIngredient";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";
-import EditIngredient from "./EditIngredient";
+import AddEditIngredient from "./AddEditIngredient";
 
 const IngredientList = () => {
   useEffect(() => {
@@ -25,7 +24,7 @@ const IngredientList = () => {
   return (
     <Collapsible title='Ingredien List' icon='list'>
       <div className='card-content'>
-        <AddIngredient />
+        <AddEditIngredient id='#id' />
         <table className='striped'>
           <thead>
             <tr>
@@ -49,7 +48,7 @@ const IngredientList = () => {
                       Delete
                     </button>
 
-                    <EditIngredient
+                    <AddEditIngredient
                       id={ingredient.id}
                       ingredient={ingredient}
                     />
@@ -59,7 +58,6 @@ const IngredientList = () => {
             })}
           </tbody>
         </table>
-        <EditIngredient id='#id' />
       </div>
     </Collapsible>
   );

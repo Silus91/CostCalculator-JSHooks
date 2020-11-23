@@ -82,16 +82,15 @@ const CreateRecipe = () => {
         <ComponentList componentList={state.componentList} />
       </div>
       <form onSubmit={handleSubmit}>
-        <div className='input-field col s12'>
-          <input
-            type='text'
-            name='productName'
-            value={state.productName}
-            className='validate'
-            onChange={handleChange}
-          />
-          <label htmlFor='productName'>Product Name</label>
-        </div>
+        <TextInput
+          type='text'
+          name='productName'
+          className='validate'
+          value={state.productName}
+          onChange={handleChange}
+          htmlFor='productName'
+          label='Product Name'
+        />
         <Button
           type='submit'
           className={
