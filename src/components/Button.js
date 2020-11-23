@@ -1,11 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 export const Button = (props) => {
   return (
-    <Fragment>
-      <button type={props.type} className={props.className}>
-        {props.text}
-      </button>
-    </Fragment>
+    <button
+      type={props.type}
+      onCLick={props.onCLick}
+      className={props.className}
+    >
+      {props.text}
+    </button>
   );
 };

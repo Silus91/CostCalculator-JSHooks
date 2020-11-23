@@ -42,9 +42,13 @@ const IngredientList = () => {
                   <td>{ingredient.ingredientWeight}</td>
                   <td>{ingredient.ingredientCost}</td>
                   <td>
-                    <button onClick={() => deleteIngredient(ingredient.id)}>
+                    <button
+                      className='btn red darken-1'
+                      onClick={() => deleteIngredient(ingredient.id)}
+                    >
                       Delete
                     </button>
+
                     <EditIngredient
                       id={ingredient.id}
                       ingredient={ingredient}

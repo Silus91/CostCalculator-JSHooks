@@ -1,7 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
+import { INGREDIENT_ADD, INGREDIENT_EDIT } from "../types/types";
+
 import M from "materialize-css";
 import TextInput from "./TextInput";
 import { IngredientContext } from "../contexts/IngredientContext";
+import { v1 as uuidv1 } from "uuid";
+import { Button } from "./Button";
 
 const EditIngredient = (props) => {
   const { dispatch } = useContext(IngredientContext);
@@ -23,7 +27,6 @@ const EditIngredient = (props) => {
     }
   }, []);
 
-  //if props 0 trzeba napisac ze ma nie dawac propsow kiedy ich niema jak sa to sa ma wiedziec kiedy update a kiedy create
   const handleChange = (event) => {
     setState({
       ...state,
@@ -31,9 +34,36 @@ const EditIngredient = (props) => {
     });
   };
 
+  const dataMap = () => {
+    const newIngredient = {
+      id: props.ingredient ? props.ingredient.id : uuidv1(),
+      ingredientName: state.ingredientName,
+      ingredientCost: parseFloat(state.ingredientCost),
+      ingredientWeight: parseFloat(state.ingredientWeight),
+      ingredientRatio: parseFloat(
+        state.ingredientCost / state.ingredientWeight
+      ),
+    };
+    return newIngredient;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newIngredient = dataMap();
+    if (props.ingredient) {
+      dispatch({
+        type: INGREDIENT_EDIT,
+        payload: newIngredient,
+        id: newIngredient.id,
+      });
+    } else {
+      dispatch({ type: INGREDIENT_ADD, payload: newIngredient });
+    }
+
+    setState({ ingredientWeight: "", ingredientName: "", ingredientCost: "" });
+    console.log(newIngredient);
   };
+  const { ingredientCost, ingredientName, ingredientWeight } = state;
 
   return (
     <div>
@@ -41,16 +71,17 @@ const EditIngredient = (props) => {
         className='waves-effect waves-light btn modal-trigger'
         data-target={props.id}
       >
-        Edit
+        {props.ingredient ? "Edit" : "Add New"}
       </a>
       <div id={props.id} className='modal'>
         <form onSubmit={handleSubmit}>
           <div className='modal-content'>
+            <h4> {props.ingredient ? "Edit" : "Add New"}</h4>
             <TextInput
               type='text'
               name='ingredientName'
               className='validate'
-              value={state.ingredientName}
+              value={ingredientName}
               onChange={handleChange}
               htmlFor='ingredientName'
               label='Ingredient Name'
@@ -60,7 +91,7 @@ const EditIngredient = (props) => {
               type='number'
               className='validate'
               name='ingredientCost'
-              value={state.ingredientCost}
+              value={ingredientCost}
               onChange={handleChange}
               htmlFor='ingredientCost'
               label='Ingredient Cost'
@@ -69,25 +100,24 @@ const EditIngredient = (props) => {
               type='number'
               className='validate'
               name='ingredientWeight'
-              value={state.ingredientWeight}
+              value={ingredientWeight}
               onChange={handleChange}
               htmlFor='ingredientWeight'
               label='Ingredient Weight'
             />
 
             <div className='modal-footer'>
-              <button
+              <Button
                 type='submit'
-                // className={
-                //   state.ingredientCost <= 0 ||
-                //   state.ingredientName <= 0 ||
-                //   state.ingredientWeight <= 0
-                //     ? "btn disabled"
-                //     : "btn teal darken-2 z-depth-2"
-                // }
-              >
-                Submit Edit
-              </button>
+                className={
+                  ingredientCost <= 0 ||
+                  ingredientName <= 0 ||
+                  ingredientWeight <= 0
+                    ? "btn disabled"
+                    : "btn teal darken-2 z-depth-2 modal-close"
+                }
+                text='submit'
+              />
             </div>
           </div>
         </form>
