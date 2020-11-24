@@ -64,13 +64,13 @@ const AddComponent = ({ addComponentToList, ingredientsList }) => {
       <form onSubmit={handleSubmit}>
         <div>{renderSelect()}</div>
         <TextInput
-          type='text'
-          name='productName'
+          type='number'
+          name='componentWeight'
           className='validate'
           value={state.componentWeight}
           onChange={handleChange}
           htmlFor='componentWeight'
-          label='Componen tWeight'
+          label='Component Weight'
         />
         <Button
           text='submit'

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import M from "materialize-css";
 import Collapsible from "./Collapsible";

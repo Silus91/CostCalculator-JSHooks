@@ -25,7 +25,6 @@ const CreateRecipe = () => {
 
   const { dispatch } = useContext(ProductContext);
 
-  //might change name if this const in the future
   const mapData = (newComponent) => {
     if (state.componentList.length <= 0) {
       setState({
@@ -106,6 +105,3 @@ const CreateRecipe = () => {
 };
 
 export default CreateRecipe;
-
-//wyczyscic statea
-//zrobic updata na ingredients list

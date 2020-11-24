@@ -47,7 +47,6 @@ const IngredientList = () => {
                     >
                       Delete
                     </button>
-
                     <AddEditIngredient
                       id={ingredient.id}
                       ingredient={ingredient}

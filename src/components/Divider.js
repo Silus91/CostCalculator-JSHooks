@@ -6,6 +6,7 @@ const Divider = (props) => {
   const [state, setState] = useState({
     divider: "",
     valuePerItem: "",
+    weightPerItem: "",
   });
   const handleChange = (event) => {
     setState({ ...state, divider: event.target.value });
@@ -13,12 +14,15 @@ const Divider = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setState({ ...state, valuePerItem: props.totalCost / state.divider });
+    setState({
+      ...state,
+      valuePerItem: props.totalCost / state.divider,
+      weightPerItem: props.totalWeight / state.divider,
+    });
   };
 
-  const { divider, valuePerItem } = state;
-  return (
-    <div>
+  const renderDividerForm = () => {
+    return (
       <form onSubmit={handleSubmit}>
         <TextInput
           type='number'
@@ -39,17 +43,26 @@ const Divider = (props) => {
           text='Divide'
         />
       </form>
-      <span className='flow-text'>
-        Total Value GBP
-        <p className='red-text'>{parseFloat(props.totalCost).toFixed(2)}</p>
-      </span>
-      <br />
-      Per 1 Item GBP
-      <p className='red-text'>{parseFloat(valuePerItem).toFixed(2)}</p>
-      Aproxx ~ Weight of 1 item +-
-      <p className='red-text'>
-        {parseFloat(props.totalWeight / divider).toFixed(2)}
-      </p>
+    );
+  };
+
+  const { divider, valuePerItem, weightPerItem } = state;
+  return (
+    <div className='card horizontal row'>
+      <div className='card-content col s6'>
+        <span className='flow-text'>
+          Total Value GBP
+          <p className='red-text'>{parseFloat(props.totalCost).toFixed(2)}</p>
+        </span>
+        <br />
+        Per 1 Item GBP
+        <p className='red-text'>{parseFloat(valuePerItem).toFixed(2)}</p>
+        Aproxx ~ Weight of 1 item +-
+        <p className='red-text'>{parseFloat(weightPerItem).toFixed(2)}</p>
+      </div>
+      <div className='card-stacked col s6'>
+        <div className='card-content'>{renderDividerForm()}</div>
+      </div>
     </div>
   );
 };

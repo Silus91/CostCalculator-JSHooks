@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import M from "materialize-css";
-import Divider from "./Divider";
 import TextInput from "./TextInput";
+import Divider from "./Divider";
 
 const ProductTable = (props) => {
   useEffect(() => {
@@ -123,8 +123,8 @@ const ProductTable = (props) => {
 export default ProductTable;
 
 //   const sumTotal = (eventTargetValue, arg) => {
-//     const arr = props.product.componentList.map((component) => {
-//       if (component.id === props.product.componentList[0].id) {
+//     const arr = product.componentList.map((component) => {
+//       if (component.id === product.componentList[0].id) {
 //         return eventTargetValue * arg;
 //       } else {
 //         return (
