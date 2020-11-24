@@ -17,7 +17,7 @@ const AddComponent = ({ addComponentToList, ingredientsList }) => {
   const dataMap = () => {
     const newComponent = {
       id: uuidv1(),
-      ingredientName: state.ingredientRatio.replace(/[0-9.]/g, ""),
+      ingredientName: state.ingredientRatio.split(" ").slice(1).join(" "),
       ingredientRatio: parseFloat(state.ingredientRatio.split(" ")[0]),
       componentWeight: parseFloat(state.componentWeight),
       componentCost: parseFloat(

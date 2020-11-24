@@ -57,7 +57,7 @@ const Divider = (props) => {
         <br />
         Per 1 Item GBP
         <p className='red-text'>{parseFloat(valuePerItem).toFixed(2)}</p>
-        Aproxx ~ Weight of 1 item +-
+        Aproxx ~ Weight of 1 item +- g/ml
         <p className='red-text'>{parseFloat(weightPerItem).toFixed(2)}</p>
       </div>
       <div className='card-stacked col s6'>
