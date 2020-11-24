@@ -47,11 +47,9 @@ const ProductTable = (props) => {
       if (component.id === props.product.componentList[0].id) {
         return eventTargetValue;
       } else {
-        console.log(eventTargetValue);
         return component.productRatio * eventTargetValue;
       }
     });
-    console.log(arr);
     return arr.reduce((prev, next) => {
       return parseFloat(prev + next);
     });
